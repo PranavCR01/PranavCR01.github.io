@@ -89,6 +89,7 @@
       display:inline-flex;
       gap:8px;
       align-items:center;
+      user-select:none;
     }
     .btn:hover{ box-shadow: var(--shadow); transform: translateY(-1px); }
     .btn:active{ transform: translateY(0px); }
@@ -97,6 +98,7 @@
       background: color-mix(in srgb, var(--accent) 18%, var(--card));
     }
     .btn:focus{ outline:none; box-shadow: var(--ring); }
+    .btn[disabled]{ opacity:.6; cursor:not-allowed; transform:none; box-shadow:none; }
 
     /* Hero */
     .hero{
@@ -123,6 +125,7 @@
       color: var(--muted);
       font-size: 13px;
       margin-bottom: 10px;
+      flex-wrap:wrap;
     }
     .pill{
       border:1px solid var(--border);
@@ -130,6 +133,7 @@
       border-radius: 999px;
       background: color-mix(in srgb, var(--bg2) 60%, transparent);
       font-size: 12px;
+      white-space:nowrap;
     }
     h1{ margin: 8px 0 10px; font-size: 44px; letter-spacing: -.6px; }
     @media (max-width: 520px){ h1{ font-size: 36px; } }
@@ -140,10 +144,7 @@
       display:grid;
       gap: 12px;
     }
-    .quick .row{ display:flex; gap:10px; flex-wrap:wrap; }
     .stat{
-      flex: 1;
-      min-width: 200px;
       padding: 14px 14px;
       border-radius: 14px;
       border:1px solid var(--border);
@@ -236,6 +237,19 @@
       font-size: 12px;
     }
 
+    .projbar{
+      padding: 0 14px 14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+    .projbar .left{
+      color: var(--muted);
+      font-size: 13px;
+    }
+
     /* Timeline */
     .timeline{ padding: 16px; display:grid; gap:12px; }
     .titem{
@@ -284,7 +298,7 @@
     }
     .modal-head h3{ margin:0; font-size: 18px; }
     .modal-body{ padding: 14px 16px 16px; color: var(--text); }
-    .modal-body p{ color: var(--muted); line-height:1.65; }
+    .modal-body p{ color: var(--muted); line-height:1.65; margin: 0 0 12px; }
     .modal-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
     .xbtn{
       border:1px solid var(--border);
@@ -295,6 +309,7 @@
       cursor:pointer;
     }
     .xbtn:hover{ color: var(--text); border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
+
     .toast{
       position: fixed;
       left: 50%;
@@ -339,6 +354,8 @@
           <span class="pill">AI Engineer</span>
           <span class="pill">ML Systems</span>
           <span class="pill">Applied GenAI</span>
+          <span class="pill">Evaluation</span>
+          <span class="pill">RAG & Agents</span>
         </div>
         <h1>Pranav Charakondala</h1>
         <p class="subtitle">
@@ -347,13 +364,9 @@
         </p>
 
         <div class="hero-actions">
-          <!-- Update these links -->
           <a class="btn btn-primary" href="https://github.com/PranavCR01" target="_blank" rel="noreferrer">⭐ GitHub</a>
           <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">🔗 LinkedIn</a>
-
-          <!-- Optional: add a resume.pdf in repo root and point here -->
           <a class="btn" href="./resume.pdf" target="_blank" rel="noreferrer">📄 Resume</a>
-
           <button class="btn" id="copyEmailBtn">📧 Copy Email</button>
         </div>
       </div>
@@ -361,11 +374,11 @@
       <div class="card quick">
         <div class="stat">
           <div class="label">Focus</div>
-          <div class="value">LLM eval • RAG • agentic systems • MLOps</div>
+          <div class="value">LLM eval • RAG • agentic systems • multimodal pipelines</div>
         </div>
         <div class="stat">
-          <div class="label">What I’m good at</div>
-          <div class="value">Shipping usable AI, not just demos</div>
+          <div class="label">Strength</div>
+          <div class="value">Shipping usable AI systems with reliability checks</div>
         </div>
         <div class="stat">
           <div class="label">Current</div>
@@ -379,11 +392,19 @@
       <div class="section-title" style="padding:16px 16px 0;">
         <div>
           <h2>Projects</h2>
-          <p>Click a project to open details. Use filters to explore.</p>
+          <p>Click a project to open details. Use tags to filter.</p>
         </div>
       </div>
 
       <div class="filters" id="filters"></div>
+
+      <div class="projbar">
+        <div class="left" id="projCount"></div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn btn-primary" id="toggleFeaturedBtn">✨ View All Projects</button>
+        </div>
+      </div>
+
       <div class="grid" id="projectGrid"></div>
     </section>
 
@@ -392,17 +413,18 @@
       <div class="section-title" style="padding:16px 16px 0;">
         <div>
           <h2>Skills</h2>
-          <p>Strong in end-to-end engineering + evaluation mindset.</p>
+          <p>End-to-end engineering + evaluation mindset.</p>
         </div>
       </div>
       <div class="chips">
-        <div class="chip"><b>Python</b> <small>systems + data</small></div>
-        <div class="chip"><b>LLMs</b> <small>RAG • agents • prompting</small></div>
-        <div class="chip"><b>Evaluation</b> <small>rubrics • golden sets • dashboards</small></div>
-        <div class="chip"><b>MLOps</b> <small>packaging • reproducibility</small></div>
-        <div class="chip"><b>Cloud</b> <small>GCP/AWS (as applicable)</small></div>
-        <div class="chip"><b>Data</b> <small>ETL • feature pipelines</small></div>
-        <div class="chip"><b>Tools</b> <small>Docker • Git • CI</small></div>
+        <div class="chip"><b>Python</b> <small>pipelines • APIs • data</small></div>
+        <div class="chip"><b>LLMs</b> <small>GPT • Mistral • LLaMA • DeepSeek</small></div>
+        <div class="chip"><b>RAG</b> <small>FAISS • embeddings • citations</small></div>
+        <div class="chip"><b>Agents</b> <small>CrewAI • orchestration</small></div>
+        <div class="chip"><b>Evaluation</b> <small>rubrics • regressions • metrics</small></div>
+        <div class="chip"><b>MLOps</b> <small>Docker • reproducibility • CI</small></div>
+        <div class="chip"><b>Data</b> <small>feature pipelines • imbalance</small></div>
+        <div class="chip"><b>Viz</b> <small>Tableau • Power BI • Folium</small></div>
       </div>
     </section>
 
@@ -411,7 +433,7 @@
       <div class="section-title" style="padding:16px 16px 0;">
         <div>
           <h2>Timeline</h2>
-          <p>Keep it short. Recruiters skim this.</p>
+          <p>Short + skimmable.</p>
         </div>
       </div>
 
@@ -419,15 +441,8 @@
         <div class="titem">
           <div class="tdate">2024 — Present</div>
           <div class="tmain">
-            <b>MSIM @ UIUC</b>
+            <b>MS in Information Management — UIUC</b>
             <small>Applied ML, NLP, data science, and production-oriented AI engineering.</small>
-          </div>
-        </div>
-        <div class="titem">
-          <div class="tdate">Add yours</div>
-          <div class="tmain">
-            <b>Research / Internship / Work</b>
-            <small>1 line impact statement. (We’ll refine once you paste details.)</small>
           </div>
         </div>
       </div>
@@ -476,60 +491,136 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // ====== CONFIG (edit these) ======
-    const EMAIL = "your.email@domain.com"; // <-- change this
+    // ============================
+    // CONFIG (edit these 2 items)
+    // ============================
+    const EMAIL = "your.email@domain.com"; // <-- replace
+    const LINKEDIN = "https://www.linkedin.com/"; // <-- replace
 
-    // Add your real project links + descriptions here
+    // ============================
+    // PROJECT DATA (real content)
+    // ============================
     const projects = [
       {
-        title: "TikTok Misinformation Detection",
-        blurb: "Multimodal pipeline to analyze video misinformation with structured outputs + eval.",
-        tags: ["LLM", "Multimodal", "Evaluation"],
-        details: "Describe: what you built end-to-end, how you evaluated it, and what improved (latency, accuracy, automation).",
-        links: [
-          { label: "GitHub Repo", href: "https://github.com/PranavCR01" },
-        ]
+        title: "Multimodal Health Misinformation Detection (UIUC / WHO)",
+        blurb: "Multimodal GenAI pipeline for short-form video misinformation using ASR, OCR, LLMs, and optional PubMed grounding.",
+        tags: ["Multimodal", "LLM", "Evaluation", "RAG", "Pipelines"],
+        details:
+          "Built an end-to-end system to analyze short-form health videos where claims span audio, on-screen text, and metadata. Implemented ASR (Whisper), OCR (EasyOCR), and model-based reasoning (GPT-4, Mistral, LLaMA) with structured JSON outputs and an explicit decision layer (agent-style). Added optional grounding via PubMed MCP. Evaluated with explanation coverage (100%), JSON parsing success (>95%), latency tracking (5–25s end-to-end), prompt strategy comparisons across models, and manual transcript review to identify failure modes. Enabled scalable analysis of 120+ real-world videos and replaced manual review with explainable structured outputs for research collaboration with WHO stakeholders.",
+        links: [{ label: "Private (Research System)", href: null }]
       },
       {
-        title: "Salesforce LLM Copilot",
-        blurb: "Natural-language → SOQL + retrieval, enabling fast CRM insights with guardrails.",
-        tags: ["RAG", "Agents", "NLP"],
-        details: "Describe: parsing, retrieval, safety checks, eval harness, and how you handled failure cases.",
-        links: [
-          { label: "GitHub Repo", href: "https://github.com/PranavCR01" },
-        ]
+        title: "Safe RAG Mental Health Copilot (Human-Centered AI)",
+        blurb: "Safety-first RAG agent for exam anxiety with citation grounding, crisis-tier abstention, and auditable logs.",
+        tags: ["RAG", "Safety", "LLM", "FastAPI", "Evaluation"],
+        details:
+          "Built a conversational agent designed for sensitive mental-health contexts where hallucinations and unsafe advice are unacceptable. Implemented FAISS retrieval over curated clinical sources (WHO/CDC/APA), session-aware memory, rule-based risk classification, and crisis-tier abstention (refuse + escalate). Built FastAPI backend, Streamlit UI, and SQLite audit logs for transparency. Evaluated with 100% citation rate, structured response validity (>95%), 0 unsafe responses across 40+ high-risk scenarios, and human rubric review for empathy and safety behavior.",
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/safe-rag-mental-health-copilot" }]
       },
       {
-        title: "AutoResearcher (RAG)",
-        blurb: "Research assistant for domain literature: retrieval + summarization with reproducible pipeline.",
-        tags: ["RAG", "Pipelines", "Search"],
-        details: "Describe: chunking/embeddings/indexing, query flow, citations, and cost/quality tradeoffs.",
-        links: [
-          { label: "GitHub Repo", href: "https://github.com/PranavCR01" },
-        ]
+        title: "AIDE-OSS: AI Cybersecurity Assistant for Log Intelligence",
+        blurb: "Retrieval-augmented, agent-style assistant for Zeek network logs with anomaly detection and session-aware investigations.",
+        tags: ["Cybersecurity", "RAG", "Agents", "ML", "Pipelines"],
+        details:
+          "Implemented a system to automate time-consuming security log investigation and correlation across sessions, IPs, and protocols. Built ingestion for Zeek logs, semantic search with FAISS, and multi-step agent workflows for investigation. Combined classical ML (Isolation Forest), log structuring (Drain3), and LLM reasoning (Mistral). Evaluated via manual validation of anomaly relevance, session-level coherence checks, retrieval success tracking, and before/after comparisons vs single-turn log queries. Result: reduced manual correlation work and enabled session-aware analysis instead of isolated queries.",
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01" }] // replace with exact repo if desired
       },
       {
-        title: "Model Evaluation Dashboard",
-        blurb: "Lightweight eval dashboard for model comparisons & regressions.",
-        tags: ["Evaluation", "Dashboards", "Automation"],
-        details: "Describe: metrics, rubric, regression tests, error buckets, and how stakeholders used it.",
-        links: []
+        title: "Salesforce LLM Copilot (NL → SOQL)",
+        blurb: "LLM-powered CRM copilot translating natural language to reliable SOQL with schema-aware validation and guardrails.",
+        tags: ["Agents", "NLP", "Validation", "FastAPI", "LLM"],
+        details:
+          "Built an AI-enabled Salesforce assistant to help business users query CRM data without writing SOQL. Implemented schema-aware reliability checks to reduce hallucinated fields and invalid queries, with explicit validation rather than free-form generation. Used DeepSeek/Mistral with tool orchestration, FastAPI service layer, Ollama for local inference, and simple_salesforce integration. Evaluated via query execution success rate, hallucination reduction through schema checks, manual baseline comparisons, plus latency/error analysis.",
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01" }] // replace with exact repo
       },
       {
-        title: "Parkinson’s Voice Modeling",
-        blurb: "Classical ML pipeline for voice-based detection/progression with explainability.",
-        tags: ["ML", "Explainability", "Time-series"],
-        details: "Describe: feature engineering, CV strategy, leakage prevention, SHAP insights.",
-        links: []
+        title: "AutoResearcher: Medical Literature RAG System",
+        blurb: "RAG-based research assistant for biomedical literature retrieval and evidence-backed synthesis with citations.",
+        tags: ["RAG", "LLM", "Search", "FastAPI", "Pipelines"],
+        details:
+          "Built a medical-domain RAG system to reduce time spent on repetitive literature review. Implemented ingestion from PubMed/PMC, FAISS retrieval, and a synthesis pipeline producing structured, cited summaries (not generic summarization). Built supporting services in Python/FastAPI. Evaluated with retrieval relevance checks, citation correctness review, latency benchmarking, and human review of summaries. Outcome: accelerated literature workflows and enabled evidence-backed synthesis for academic research use cases.",
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01" }] // replace with exact repo
       },
       {
-        title: "Cybersecurity Log Intelligence",
-        blurb: "LLM + retrieval workflow to summarize and triage noisy security logs.",
-        tags: ["LLM", "RAG", "Systems"],
-        details: "Describe: parsing, retrieval, summarization prompts, and eval strategy.",
-        links: []
+        title: "Contextual Fraud Detection with Generative AI",
+        blurb: "Hybrid pipeline using LLMs as feature generators to boost fraud classification with classical ML (F1 = 0.978).",
+        tags: ["GenAI", "ML", "Evaluation", "FinTech"],
+        details:
+          "Built a fraud detection pipeline that augments structured transaction data with LLM-generated contextual features. Used GPT-4o for neutral transaction descriptions, T5-small for summarization, TF-IDF + One-Hot encoding, and Logistic Regression (L1/L2) for classification. Addressed imbalance with SMOTE and implemented regex-based bias neutralization to reduce leakage/bias risk. Achieved best F1 = 0.978 and cross-validation mean accuracy = 0.9707, with baseline vs context-augmented comparisons and metric tracking across classes. Demonstrated interpretable GenAI-augmented features suitable for regulated environments.",
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/contextual-fraud-detection-genai" }]
+      },
+
+      /* ---- "View All" projects below ---- */
+      {
+        title: "Credit Line Optimization Framework (Top 10 — Synchrony Datathon @ UIUC 2025)",
+        blurb: "End-to-end ML decision pipeline: spend forecasting → risk segmentation → credit line recommendation.",
+        tags: ["ML", "FinTech", "Decisioning", "Evaluation"],
+        details:
+          "Built a framework to forecast customer spend, segment credit risk, and recommend personalized credit line adjustments using anonymized financial behavior data. Implemented spend forecasting with Gradient Boosting Regressor (R² = 0.9985), risk segmentation with XGBoost + SMOTE (88% accuracy), and credit line recommendation with Random Forest Regressor (MAE = $3.38). Included feature engineering, model comparisons, cross-validation, and diagnostics via Jupyter. Outcome: identified high-value customers for safe growth, flagged high-risk accounts, and placed Top 10 in the Synchrony Datathon @ UIUC 2025.",
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/credit-line-optimizer" }]
+      },
+      {
+        title: "DxbAgent: Real Estate Investment & Outreach Assistant",
+        blurb: "Local modular agent system combining ROI analytics, RAG over Dubai laws, and LLM outreach in Streamlit.",
+        tags: ["Agents", "RAG", "LLM", "Systems", "Streamlit"],
+        details:
+          "Built a Streamlit-based AI assistant for Dubai real estate investing that unifies ROI/rental yield analytics, a RAG FAQ chatbot over Dubai property laws (PDFs), and LLM-powered WhatsApp outreach generation. Used Mistral via Ollama (local inference), FAISS + MiniLM embeddings for retrieval, and LangChain for RAG orchestration. Added prompt caching and CSV upload/download workflows for usability and latency improvements. Evaluated informally by verifying responses against source PDFs, measuring latency improvements from local inference + caching, and A/B comparing outreach message quality.",
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/DxbAgent" }]
+      },
+      {
+        title: "Automated Stock Market Analysis (Multi-Agent LLM System)",
+        blurb: "CrewAI multi-agent pipeline: financials + FinBERT sentiment + analyst consensus → explainable recommendations.",
+        tags: ["Agents", "Evaluation", "NLP", "LLM"],
+        details:
+          "Built a multi-agent system for automated stock analysis that synthesizes real-time financial data (Yahoo Finance), news sentiment (Google News + SerpAPI + FinBERT), and analyst consensus. Orchestrated role-specific agents in CrewAI (stock identifier, financials, sentiment, consensus, final reasoning). Evaluated recommendations against TipRanks analyst consensus and used BERTScore to measure alignment of AI justifications with analyst rationale (BERTScore F1 consistently > 0.82 across NVDA/TSLA/GME; NVDA F1 ≈ 0.93). Outcome: unified fragmented signals into a single explainable pipeline and demonstrated agent orchestration + evaluation + interpretability.",
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/automated-stock-market-analysis" }]
+      },
+      {
+        title: "Weather-Aware Roadtrip Planner + Spotify Playlist Generator",
+        blurb: "Geospatial + weather scoring pipeline that recommends cool-weather trips and generates playlists aligned with route mood.",
+        tags: ["Data", "APIs", "Visualization"],
+        details:
+          "Built a data-driven roadtrip planner using OpenWeatherMap + Spotify APIs. Implemented rule-based weather scoring and mood mapping, route sampling, Haversine filtering, and interactive route visualization with Folium. Filtered 1000+ candidate locations to shortlist optimal cool-weather routes (threshold < 25°C). Validated through real-world trip execution and generated a 9+ hour Spotify playlist aligned with route weather moods.",
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/roadtrip-project" }]
+      },
+      {
+        title: "Banking & Credit Card Complaints Analysis (CFPB)",
+        blurb: "Tableau + Power BI storytelling to uncover complaint hotspots, resolution delays, and systemic service issues.",
+        tags: ["Analytics", "Visualization", "FinTech"],
+        details:
+          "Analyzed CFPB complaint datasets using Tableau Prep for cleaning and transformation and built interactive dashboards in Power BI. Performed aggregations, trend analysis, demographic segmentation, and drill-down exploration across company, geography, issue type, and resolution status. Evaluated via consistency checks across years/categories and cross-dashboard validation of trends. Outcome: identified complaint hotspots and service gaps, highlighted resolution delays, and produced reusable dashboards and a formal report for stakeholder decision-making.",
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/banking-credit-complaints-analysis" }]
+      },
+      {
+        title: "Statistical Analysis of Chicago Crime (2019–2024)",
+        blurb: "Longitudinal R analysis of crime trends, seasonality, arrest rates, and geographic hotspots with reproducible scripts.",
+        tags: ["Analytics", "R", "Visualization"],
+        details:
+          "Pulled Chicago Data Portal crime data (2019–2024) and conducted statistical + longitudinal analysis in R, focusing on interpretability rather than black-box prediction. Analyzed year-over-year trends (including COVID-era shifts), seasonal spikes (~15–20% summer increase), arrest vs non-arrest rates by crime category, and location density via heatmaps. Organized work as modular R scripts answering specific research questions and produced a final analytical report.",
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/chicago-crime-analysis-2019-2024" }]
+      },
+      {
+        title: "Mishathi: Smart Vision System (Raspberry Pi Assistive AI)",
+        blurb: "Edge multimodal system combining object detection, OCR, face recognition, and gesture recognition with real-time audio assistance.",
+        tags: ["Multimodal", "Computer Vision", "Edge", "Systems"],
+        details:
+          "Built a Raspberry Pi–based assistive vision system providing real-time audio feedback for visually impaired users. Implemented concurrent pipelines for object detection (Faster R-CNN via TensorFlow Object Detection API), OCR (handwritten CNN+RNN with CTC; scene text via EasyOCR), face recognition (MTCNN + FaceNet embeddings), and gesture recognition (custom CNN). Unified outputs into a text stream and delivered Bluetooth audio via eSpeak. Evaluated gesture recognition at 96.6% validation accuracy, object detection via mAP with >60% confidence threshold, and tested end-to-end latency on-device for real-time usability with manual testing and ophthalmologist consultation. Private implementation (documented in IEEE paper).",
+        links: [{ label: "Private (Academic / IEEE Paper)", href: null }]
       }
     ];
+
+    // ================
+    // FEATURED TOGGLE
+    // ================
+    // Curated set recruiters should see first
+    const FEATURED_TITLES = new Set([
+      "Multimodal Health Misinformation Detection (UIUC / WHO)",
+      "Safe RAG Mental Health Copilot (Human-Centered AI)",
+      "Salesforce LLM Copilot (NL → SOQL)",
+      "AutoResearcher: Medical Literature RAG System",
+      "Contextual Fraud Detection with Generative AI",
+      "Automated Stock Market Analysis (Multi-Agent LLM System)"
+    ]);
 
     // ====== THEME ======
     const themeBtn = document.getElementById("themeBtn");
@@ -567,15 +658,38 @@
     document.getElementById("copyEmailBtn").addEventListener("click", copyEmail);
     document.getElementById("copyEmailBtn2").addEventListener("click", copyEmail);
 
-    // ====== PROJECTS + FILTERS ======
+    // ====== LINKEDIN PATCH ======
+    document.querySelectorAll('a[href="https://www.linkedin.com/"]').forEach(a => a.href = LINKEDIN);
+
+    // ====== PROJECTS + FILTERS + FEATURED ======
     const grid = document.getElementById("projectGrid");
     const filtersEl = document.getElementById("filters");
+    const projCount = document.getElementById("projCount");
+    const toggleFeaturedBtn = document.getElementById("toggleFeaturedBtn");
 
-    const allTags = Array.from(new Set(projects.flatMap(p => p.tags))).sort();
-    const filterState = { active: "All" };
+    let showAllProjects = false;
+
+    function getVisibleProjects(){
+      if (showAllProjects) return projects;
+      return projects.filter(p => FEATURED_TITLES.has(p.title));
+    }
+
+    function computeTags(items){
+      return Array.from(new Set(items.flatMap(p => p.tags))).sort();
+    }
+
+    let filterState = { active: "All" };
 
     function renderFilters(){
+      const items = getVisibleProjects();
+      const allTags = computeTags(items);
       const tags = ["All", ...allTags];
+
+      // If current filter doesn't exist in current view, reset to All
+      if (filterState.active !== "All" && !tags.includes(filterState.active)) {
+        filterState.active = "All";
+      }
+
       filtersEl.innerHTML = tags.map(t => {
         const cls = (t === filterState.active) ? "filter active" : "filter";
         return `<span class="${cls}" data-tag="${t}">${t}</span>`;
@@ -592,14 +706,21 @@
 
     function renderGrid(){
       const selected = filterState.active;
-      const items = selected === "All"
-        ? projects
-        : projects.filter(p => p.tags.includes(selected));
+      const visible = getVisibleProjects();
 
-      grid.innerHTML = items.map((p, idx) => {
+      const items = selected === "All"
+        ? visible
+        : visible.filter(p => p.tags.includes(selected));
+
+      projCount.textContent = showAllProjects
+        ? `Showing ${items.length} / ${projects.length} projects`
+        : `Showing ${items.length} featured projects`;
+
+      grid.innerHTML = items.map((p) => {
         const tags = p.tags.map(t => `<span class="tag">${t}</span>`).join("");
+        const idx = projects.indexOf(p);
         return `
-          <div class="proj" data-idx="${projects.indexOf(p)}">
+          <div class="proj" data-idx="${idx}">
             <h3>${p.title}</h3>
             <p>${p.blurb}</p>
             <div class="tags">${tags}</div>
@@ -616,6 +737,13 @@
       });
     }
 
+    toggleFeaturedBtn.addEventListener("click", () => {
+      showAllProjects = !showAllProjects;
+      toggleFeaturedBtn.textContent = showAllProjects ? "✨ Show Featured Only" : "✨ View All Projects";
+      renderFilters();
+      renderGrid();
+    });
+
     // ====== MODAL ======
     const modalWrap = document.getElementById("modalWrap");
     const closeModalBtn = document.getElementById("closeModal");
@@ -631,9 +759,19 @@
       mTags.innerHTML = p.tags.map(t=> `<span class="tag">${t}</span>`).join("");
 
       const actions = [];
-      p.links.forEach(l => actions.push(
-        `<a class="btn btn-primary" href="${l.href}" target="_blank" rel="noreferrer">🔗 ${l.label}</a>`
-      ));
+
+      (p.links || []).forEach(l => {
+        if (l.href) {
+          actions.push(
+            `<a class="btn btn-primary" href="${l.href}" target="_blank" rel="noreferrer">🔗 ${l.label}</a>`
+          );
+        } else {
+          actions.push(
+            `<button class="btn btn-primary" disabled title="Not publicly available">🔒 ${l.label}</button>`
+          );
+        }
+      });
+
       actions.push(`<button class="btn" id="copyEmailInModal">📧 Copy Email</button>`);
       mActions.innerHTML = actions.join("");
 
