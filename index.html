@@ -2,44 +2,660 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Pranav Charakondala | AI Engineer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AI Engineer portfolio — ML Systems, Applied GenAI, evaluation, and production ML." />
+
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont;
-      background: #0f172a;
-      color: #e5e7eb;
-      margin: 0;
-      padding: 0;
+    :root{
+      --bg: #0b1220;
+      --bg2:#0f172a;
+      --card:#0b1b35;
+      --text:#e5e7eb;
+      --muted:#a7b0c0;
+      --border: rgba(255,255,255,.10);
+      --accent:#38bdf8;
+      --accent2:#22c55e;
+      --shadow: 0 16px 40px rgba(0,0,0,.35);
+      --ring: 0 0 0 3px rgba(56,189,248,.25);
     }
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 80px 24px;
+    [data-theme="light"]{
+      --bg:#f6f7fb;
+      --bg2:#ffffff;
+      --card:#ffffff;
+      --text:#0b1220;
+      --muted:#465066;
+      --border: rgba(11,18,32,.12);
+      --accent:#0ea5e9;
+      --accent2:#16a34a;
+      --shadow: 0 16px 40px rgba(0,0,0,.10);
+      --ring: 0 0 0 3px rgba(14,165,233,.25);
     }
-    h1 {
-      font-size: 2.5rem;
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(1200px 700px at 30% -10%, rgba(56,189,248,.18), transparent 60%),
+                  radial-gradient(900px 600px at 80% 0%, rgba(34,197,94,.14), transparent 55%),
+                  linear-gradient(180deg, var(--bg), var(--bg2));
+      color: var(--text);
     }
-    a {
-      color: #38bdf8;
-      text-decoration: none;
+    a{ color: var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+    .container{ max-width: 1050px; margin: 0 auto; padding: 28px 18px 80px; }
+
+    /* Top bar */
+    .topbar{
+      position: sticky; top: 0; z-index: 30;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--bg2) 70%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner{
+      max-width: 1050px; margin: 0 auto;
+      padding: 12px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700; letter-spacing:.2px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(56,189,248,.12);
+    }
+    nav{
+      display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .navlink{
+      font-size: 13px; color: var(--muted);
+      padding: 8px 10px; border-radius: 10px;
+      border:1px solid transparent;
+    }
+    .navlink:hover{ color: var(--text); border-color: var(--border); text-decoration:none; }
+    .btn{
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--card) 72%, transparent);
+      color: var(--text);
+      padding: 9px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+      box-shadow: none;
+      font-size: 13px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+    }
+    .btn:hover{ box-shadow: var(--shadow); transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0px); }
+    .btn-primary{
+      border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+      background: color-mix(in srgb, var(--accent) 18%, var(--card));
+    }
+    .btn:focus{ outline:none; box-shadow: var(--ring); }
+
+    /* Hero */
+    .hero{
+      padding: 56px 0 22px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: start;
+    }
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+    .card{
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--card) 80%, transparent);
+      border-radius: 18px;
+      box-shadow: none;
+    }
+    .hero-main{ padding: 26px 22px; }
+    .kicker{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    .pill{
+      border:1px solid var(--border);
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--bg2) 60%, transparent);
+      font-size: 12px;
+    }
+    h1{ margin: 8px 0 10px; font-size: 44px; letter-spacing: -.6px; }
+    @media (max-width: 520px){ h1{ font-size: 36px; } }
+    .subtitle{ color: var(--muted); line-height: 1.6; }
+    .hero-actions{ margin-top: 16px; display:flex; flex-wrap:wrap; gap:10px; }
+    .quick{
+      padding: 18px;
+      display:grid;
+      gap: 12px;
+    }
+    .quick .row{ display:flex; gap:10px; flex-wrap:wrap; }
+    .stat{
+      flex: 1;
+      min-width: 200px;
+      padding: 14px 14px;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--bg2) 70%, transparent);
+    }
+    .stat .label{ color: var(--muted); font-size: 12px; }
+    .stat .value{ margin-top: 6px; font-weight: 700; }
+
+    /* Sections */
+    section{ margin-top: 28px; }
+    .section-title{
+      display:flex; align-items:end; justify-content:space-between; gap:14px;
+      margin: 10px 0 12px;
+    }
+    .section-title h2{ margin:0; font-size: 20px; letter-spacing: -.2px; }
+    .section-title p{ margin:0; color: var(--muted); font-size: 13px; }
+
+    /* Skills */
+    .chips{ display:flex; flex-wrap:wrap; gap:10px; padding: 16px; }
+    .chip{
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--bg2) 70%, transparent);
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--text);
+      cursor: default;
+      display:inline-flex; align-items:center; gap:8px;
+    }
+    .chip b{ font-weight:700; }
+    .chip small{ color: var(--muted); }
+
+    /* Projects */
+    .filters{
+      display:flex; flex-wrap:wrap; gap:8px;
+      padding: 12px 16px 0;
+    }
+    .filter{
+      cursor:pointer;
+      user-select:none;
+      border:1px solid var(--border);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+      background: color-mix(in srgb, var(--bg2) 70%, transparent);
+    }
+    .filter.active{
+      color: var(--text);
+      border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
+      background: color-mix(in srgb, var(--accent) 16%, var(--bg2));
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      padding: 14px;
+    }
+    @media (max-width: 980px){ .grid{ grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 640px){ .grid{ grid-template-columns: 1fr;} }
+
+    .proj{
+      padding: 14px;
+      border-radius: 16px;
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--bg2) 70%, transparent);
+      cursor:pointer;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      min-height: 140px;
+    }
+    .proj:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+    }
+    .proj h3{ margin: 0 0 8px; font-size: 16px; letter-spacing: -.2px; }
+    .proj p{ margin: 0 0 10px; color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .tags{ display:flex; flex-wrap:wrap; gap:6px; }
+    .tag{
+      font-size: 11px;
+      padding: 5px 8px;
+      border:1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+    }
+    .proj .meta{
+      margin-top: 10px;
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* Timeline */
+    .timeline{ padding: 16px; display:grid; gap:12px; }
+    .titem{
+      display:grid;
+      grid-template-columns: 130px 1fr;
+      gap: 12px;
+      padding: 12px;
+      border:1px solid var(--border);
+      border-radius: 16px;
+      background: color-mix(in srgb, var(--bg2) 70%, transparent);
+    }
+    @media (max-width: 640px){ .titem{ grid-template-columns: 1fr; } }
+    .tdate{ color: var(--muted); font-size: 12px; }
+    .tmain b{ display:block; margin-bottom: 4px; }
+    .tmain{ color: var(--text); }
+    .tmain small{ color: var(--muted); display:block; line-height:1.5; }
+
+    /* Footer */
+    footer{
+      margin-top: 34px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align:center;
+      padding: 16px 0 0;
+    }
+
+    /* Modal */
+    .modal-wrap{
+      position: fixed; inset: 0; z-index: 50;
+      display:none; place-items:center;
+      background: rgba(0,0,0,.55);
+      padding: 18px;
+    }
+    .modal{
+      width: min(820px, 96vw);
+      border-radius: 18px;
+      border:1px solid var(--border);
+      background: var(--bg2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modal-head{
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid var(--border);
+      display:flex; justify-content:space-between; align-items:flex-start; gap:10px;
+    }
+    .modal-head h3{ margin:0; font-size: 18px; }
+    .modal-body{ padding: 14px 16px 16px; color: var(--text); }
+    .modal-body p{ color: var(--muted); line-height:1.65; }
+    .modal-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
+    .xbtn{
+      border:1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      padding: 7px 10px;
+      border-radius: 12px;
+      cursor:pointer;
+    }
+    .xbtn:hover{ color: var(--text); border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      background: color-mix(in srgb, var(--bg2) 88%, transparent);
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 13px;
+      display:none;
+      z-index: 60;
+      box-shadow: var(--shadow);
     }
   </style>
 </head>
+
 <body>
-  <div class="container">
-    <h1>Pranav Charakondala</h1>
-    <p>AI Engineer | ML Systems | Applied GenAI</p>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Pranav</span>
+      </div>
 
-    <p>
-      MS in Information Management @ UIUC<br />
-      Focused on ML systems, LLMs, evaluation, and production AI.
-    </p>
-
-    <p>
-      <a href="https://github.com/PranavCR01">GitHub</a> ·
-      <a href="https://www.linkedin.com/">LinkedIn</a>
-    </p>
+      <nav>
+        <a class="navlink" href="#projects">Projects</a>
+        <a class="navlink" href="#skills">Skills</a>
+        <a class="navlink" href="#timeline">Timeline</a>
+        <a class="navlink" href="#contact">Contact</a>
+        <button class="btn" id="themeBtn" title="Toggle theme">🌓 Theme</button>
+      </nav>
+    </div>
   </div>
+
+  <div class="container">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="card hero-main">
+        <div class="kicker">
+          <span class="pill">AI Engineer</span>
+          <span class="pill">ML Systems</span>
+          <span class="pill">Applied GenAI</span>
+        </div>
+        <h1>Pranav Charakondala</h1>
+        <p class="subtitle">
+          MS in Information Management @ UIUC. Focused on ML systems, LLM evaluation, and production AI.
+          I build end-to-end pipelines: data → models → evaluation → deployment.
+        </p>
+
+        <div class="hero-actions">
+          <!-- Update these links -->
+          <a class="btn btn-primary" href="https://github.com/PranavCR01" target="_blank" rel="noreferrer">⭐ GitHub</a>
+          <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">🔗 LinkedIn</a>
+
+          <!-- Optional: add a resume.pdf in repo root and point here -->
+          <a class="btn" href="./resume.pdf" target="_blank" rel="noreferrer">📄 Resume</a>
+
+          <button class="btn" id="copyEmailBtn">📧 Copy Email</button>
+        </div>
+      </div>
+
+      <div class="card quick">
+        <div class="stat">
+          <div class="label">Focus</div>
+          <div class="value">LLM eval • RAG • agentic systems • MLOps</div>
+        </div>
+        <div class="stat">
+          <div class="label">What I’m good at</div>
+          <div class="value">Shipping usable AI, not just demos</div>
+        </div>
+        <div class="stat">
+          <div class="label">Current</div>
+          <div class="value">Open to New-Grad AI/ML roles</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="card">
+      <div class="section-title" style="padding:16px 16px 0;">
+        <div>
+          <h2>Projects</h2>
+          <p>Click a project to open details. Use filters to explore.</p>
+        </div>
+      </div>
+
+      <div class="filters" id="filters"></div>
+      <div class="grid" id="projectGrid"></div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="card">
+      <div class="section-title" style="padding:16px 16px 0;">
+        <div>
+          <h2>Skills</h2>
+          <p>Strong in end-to-end engineering + evaluation mindset.</p>
+        </div>
+      </div>
+      <div class="chips">
+        <div class="chip"><b>Python</b> <small>systems + data</small></div>
+        <div class="chip"><b>LLMs</b> <small>RAG • agents • prompting</small></div>
+        <div class="chip"><b>Evaluation</b> <small>rubrics • golden sets • dashboards</small></div>
+        <div class="chip"><b>MLOps</b> <small>packaging • reproducibility</small></div>
+        <div class="chip"><b>Cloud</b> <small>GCP/AWS (as applicable)</small></div>
+        <div class="chip"><b>Data</b> <small>ETL • feature pipelines</small></div>
+        <div class="chip"><b>Tools</b> <small>Docker • Git • CI</small></div>
+      </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline" class="card">
+      <div class="section-title" style="padding:16px 16px 0;">
+        <div>
+          <h2>Timeline</h2>
+          <p>Keep it short. Recruiters skim this.</p>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="titem">
+          <div class="tdate">2024 — Present</div>
+          <div class="tmain">
+            <b>MSIM @ UIUC</b>
+            <small>Applied ML, NLP, data science, and production-oriented AI engineering.</small>
+          </div>
+        </div>
+        <div class="titem">
+          <div class="tdate">Add yours</div>
+          <div class="tmain">
+            <b>Research / Internship / Work</b>
+            <small>1 line impact statement. (We’ll refine once you paste details.)</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="card" style="padding:16px;">
+      <div class="section-title">
+        <div>
+          <h2>Contact</h2>
+          <p>Fastest way to reach me.</p>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="btn btn-primary" id="copyEmailBtn2">📧 Copy Email</button>
+        <a class="btn" href="https://github.com/PranavCR01" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+      <p style="color:var(--muted); margin:12px 0 0; font-size:13px;">
+        Tip: Add <code>resume.pdf</code> to your repo root so the Resume button works.
+      </p>
+    </section>
+
+    <footer>
+      Built on GitHub Pages • <span id="year"></span>
+    </footer>
+  </div>
+
+  <!-- MODAL -->
+  <div class="modal-wrap" id="modalWrap" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Project details">
+      <div class="modal-head">
+        <div>
+          <h3 id="mTitle">Project Title</h3>
+          <div class="tags" id="mTags" style="margin-top:8px;"></div>
+        </div>
+        <button class="xbtn" id="closeModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <p id="mDesc"></p>
+        <div class="modal-actions" id="mActions"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // ====== CONFIG (edit these) ======
+    const EMAIL = "your.email@domain.com"; // <-- change this
+
+    // Add your real project links + descriptions here
+    const projects = [
+      {
+        title: "TikTok Misinformation Detection",
+        blurb: "Multimodal pipeline to analyze video misinformation with structured outputs + eval.",
+        tags: ["LLM", "Multimodal", "Evaluation"],
+        details: "Describe: what you built end-to-end, how you evaluated it, and what improved (latency, accuracy, automation).",
+        links: [
+          { label: "GitHub Repo", href: "https://github.com/PranavCR01" },
+        ]
+      },
+      {
+        title: "Salesforce LLM Copilot",
+        blurb: "Natural-language → SOQL + retrieval, enabling fast CRM insights with guardrails.",
+        tags: ["RAG", "Agents", "NLP"],
+        details: "Describe: parsing, retrieval, safety checks, eval harness, and how you handled failure cases.",
+        links: [
+          { label: "GitHub Repo", href: "https://github.com/PranavCR01" },
+        ]
+      },
+      {
+        title: "AutoResearcher (RAG)",
+        blurb: "Research assistant for domain literature: retrieval + summarization with reproducible pipeline.",
+        tags: ["RAG", "Pipelines", "Search"],
+        details: "Describe: chunking/embeddings/indexing, query flow, citations, and cost/quality tradeoffs.",
+        links: [
+          { label: "GitHub Repo", href: "https://github.com/PranavCR01" },
+        ]
+      },
+      {
+        title: "Model Evaluation Dashboard",
+        blurb: "Lightweight eval dashboard for model comparisons & regressions.",
+        tags: ["Evaluation", "Dashboards", "Automation"],
+        details: "Describe: metrics, rubric, regression tests, error buckets, and how stakeholders used it.",
+        links: []
+      },
+      {
+        title: "Parkinson’s Voice Modeling",
+        blurb: "Classical ML pipeline for voice-based detection/progression with explainability.",
+        tags: ["ML", "Explainability", "Time-series"],
+        details: "Describe: feature engineering, CV strategy, leakage prevention, SHAP insights.",
+        links: []
+      },
+      {
+        title: "Cybersecurity Log Intelligence",
+        blurb: "LLM + retrieval workflow to summarize and triage noisy security logs.",
+        tags: ["LLM", "RAG", "Systems"],
+        details: "Describe: parsing, retrieval, summarization prompts, and eval strategy.",
+        links: []
+      }
+    ];
+
+    // ====== THEME ======
+    const themeBtn = document.getElementById("themeBtn");
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
+
+    function toggleTheme(){
+      const cur = document.documentElement.getAttribute("data-theme");
+      const next = cur === "light" ? "" : "light";
+      if (next) document.documentElement.setAttribute("data-theme", next);
+      else document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem("theme", next || "");
+    }
+    themeBtn.addEventListener("click", toggleTheme);
+
+    // ====== TOAST ======
+    const toast = document.getElementById("toast");
+    let toastTimer;
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.style.display = "block";
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(()=> toast.style.display="none", 1500);
+    }
+
+    // ====== COPY EMAIL ======
+    async function copyEmail(){
+      try{
+        await navigator.clipboard.writeText(EMAIL);
+        showToast("Email copied ✅");
+      }catch(e){
+        showToast("Could not copy (browser blocked).");
+      }
+    }
+    document.getElementById("copyEmailBtn").addEventListener("click", copyEmail);
+    document.getElementById("copyEmailBtn2").addEventListener("click", copyEmail);
+
+    // ====== PROJECTS + FILTERS ======
+    const grid = document.getElementById("projectGrid");
+    const filtersEl = document.getElementById("filters");
+
+    const allTags = Array.from(new Set(projects.flatMap(p => p.tags))).sort();
+    const filterState = { active: "All" };
+
+    function renderFilters(){
+      const tags = ["All", ...allTags];
+      filtersEl.innerHTML = tags.map(t => {
+        const cls = (t === filterState.active) ? "filter active" : "filter";
+        return `<span class="${cls}" data-tag="${t}">${t}</span>`;
+      }).join("");
+
+      filtersEl.querySelectorAll(".filter").forEach(el=>{
+        el.addEventListener("click", () => {
+          filterState.active = el.dataset.tag;
+          renderFilters();
+          renderGrid();
+        });
+      });
+    }
+
+    function renderGrid(){
+      const selected = filterState.active;
+      const items = selected === "All"
+        ? projects
+        : projects.filter(p => p.tags.includes(selected));
+
+      grid.innerHTML = items.map((p, idx) => {
+        const tags = p.tags.map(t => `<span class="tag">${t}</span>`).join("");
+        return `
+          <div class="proj" data-idx="${projects.indexOf(p)}">
+            <h3>${p.title}</h3>
+            <p>${p.blurb}</p>
+            <div class="tags">${tags}</div>
+            <div class="meta">
+              <span>Click for details</span>
+              <span>↗</span>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      grid.querySelectorAll(".proj").forEach(card=>{
+        card.addEventListener("click", () => openModal(+card.dataset.idx));
+      });
+    }
+
+    // ====== MODAL ======
+    const modalWrap = document.getElementById("modalWrap");
+    const closeModalBtn = document.getElementById("closeModal");
+    const mTitle = document.getElementById("mTitle");
+    const mTags = document.getElementById("mTags");
+    const mDesc = document.getElementById("mDesc");
+    const mActions = document.getElementById("mActions");
+
+    function openModal(idx){
+      const p = projects[idx];
+      mTitle.textContent = p.title;
+      mDesc.textContent = p.details;
+      mTags.innerHTML = p.tags.map(t=> `<span class="tag">${t}</span>`).join("");
+
+      const actions = [];
+      p.links.forEach(l => actions.push(
+        `<a class="btn btn-primary" href="${l.href}" target="_blank" rel="noreferrer">🔗 ${l.label}</a>`
+      ));
+      actions.push(`<button class="btn" id="copyEmailInModal">📧 Copy Email</button>`);
+      mActions.innerHTML = actions.join("");
+
+      modalWrap.style.display = "grid";
+      modalWrap.setAttribute("aria-hidden", "false");
+
+      const copyBtn = document.getElementById("copyEmailInModal");
+      if (copyBtn) copyBtn.addEventListener("click", copyEmail);
+    }
+
+    function closeModal(){
+      modalWrap.style.display = "none";
+      modalWrap.setAttribute("aria-hidden", "true");
+    }
+    closeModalBtn.addEventListener("click", closeModal);
+    modalWrap.addEventListener("click", (e)=>{ if(e.target === modalWrap) closeModal(); });
+    window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeModal(); });
+
+    // ====== INIT ======
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderFilters();
+    renderGrid();
+  </script>
 </body>
 </html>
