@@ -494,8 +494,8 @@
     // ============================
     // CONFIG (edit these 2 items)
     // ============================
-    const EMAIL = "your.email@domain.com"; // <-- replace
-    const LINKEDIN = "https://www.linkedin.com/"; // <-- replace
+    const EMAIL = "reach.pranavcr@gmail.com";
+    const LINKEDIN = "https://www.linkedin.com/"; // (unchanged)
 
     // ============================
     // PROJECT DATA (real content)
@@ -507,7 +507,7 @@
         tags: ["Multimodal", "LLM", "Evaluation", "RAG", "Pipelines"],
         details:
           "Built an end-to-end system to analyze short-form health videos where claims span audio, on-screen text, and metadata. Implemented ASR (Whisper), OCR (EasyOCR), and model-based reasoning (GPT-4, Mistral, LLaMA) with structured JSON outputs and an explicit decision layer (agent-style). Added optional grounding via PubMed MCP. Evaluated with explanation coverage (100%), JSON parsing success (>95%), latency tracking (5–25s end-to-end), prompt strategy comparisons across models, and manual transcript review to identify failure modes. Enabled scalable analysis of 120+ real-world videos and replaced manual review with explainable structured outputs for research collaboration with WHO stakeholders.",
-        links: [{ label: "Private (Research System)", href: null }]
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/tiktok-misinformation-tool" }]
       },
       {
         title: "Safe RAG Mental Health Copilot (Human-Centered AI)",
@@ -523,7 +523,7 @@
         tags: ["Cybersecurity", "RAG", "Agents", "ML", "Pipelines"],
         details:
           "Implemented a system to automate time-consuming security log investigation and correlation across sessions, IPs, and protocols. Built ingestion for Zeek logs, semantic search with FAISS, and multi-step agent workflows for investigation. Combined classical ML (Isolation Forest), log structuring (Drain3), and LLM reasoning (Mistral). Evaluated via manual validation of anomaly relevance, session-level coherence checks, retrieval success tracking, and before/after comparisons vs single-turn log queries. Result: reduced manual correlation work and enabled session-aware analysis instead of isolated queries.",
-        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01" }] // replace with exact repo if desired
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/AIDE-OSS" }]
       },
       {
         title: "Salesforce LLM Copilot (NL → SOQL)",
@@ -531,7 +531,7 @@
         tags: ["Agents", "NLP", "Validation", "FastAPI", "LLM"],
         details:
           "Built an AI-enabled Salesforce assistant to help business users query CRM data without writing SOQL. Implemented schema-aware reliability checks to reduce hallucinated fields and invalid queries, with explicit validation rather than free-form generation. Used DeepSeek/Mistral with tool orchestration, FastAPI service layer, Ollama for local inference, and simple_salesforce integration. Evaluated via query execution success rate, hallucination reduction through schema checks, manual baseline comparisons, plus latency/error analysis.",
-        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01" }] // replace with exact repo
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01" }] // unchanged
       },
       {
         title: "AutoResearcher: Medical Literature RAG System",
@@ -539,7 +539,7 @@
         tags: ["RAG", "LLM", "Search", "FastAPI", "Pipelines"],
         details:
           "Built a medical-domain RAG system to reduce time spent on repetitive literature review. Implemented ingestion from PubMed/PMC, FAISS retrieval, and a synthesis pipeline producing structured, cited summaries (not generic summarization). Built supporting services in Python/FastAPI. Evaluated with retrieval relevance checks, citation correctness review, latency benchmarking, and human review of summaries. Outcome: accelerated literature workflows and enabled evidence-backed synthesis for academic research use cases.",
-        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01" }] // replace with exact repo
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01" }] // unchanged
       },
       {
         title: "Contextual Fraud Detection with Generative AI",
@@ -588,7 +588,7 @@
         blurb: "Tableau + Power BI storytelling to uncover complaint hotspots, resolution delays, and systemic service issues.",
         tags: ["Analytics", "Visualization", "FinTech"],
         details:
-          "Analyzed CFPB complaint datasets using Tableau Prep for cleaning and transformation and built interactive dashboards in Power BI. Performed aggregations, trend analysis, demographic segmentation, and drill-down exploration across company, geography, issue type, and resolution status. Evaluated via consistency checks across years/categories and cross-dashboard validation of trends. Outcome: identified complaint hotspots and service gaps, highlighted resolution delays, and produced reusable dashboards and a formal report for stakeholder decision-making.",
+          "Analyzed CFPB complaint datasets using Tableau Prep for cleaning and transformation and built interactive dashboards in Power BI. Performed aggregations, trend analysis, demographic segmentation, and drill-down exploration across company, geography, issue type, and resolution status. Evaluated via consistency checks across years/categories and cross-dashboard validation of trends. Outcome: identified complaint hotspots and service gaps, highlighted resolution delays, and produced reusable dashboards and a formal project report for stakeholder decision-making.",
         links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/banking-credit-complaints-analysis" }]
       },
       {
@@ -605,14 +605,13 @@
         tags: ["Multimodal", "Computer Vision", "Edge", "Systems"],
         details:
           "Built a Raspberry Pi–based assistive vision system providing real-time audio feedback for visually impaired users. Implemented concurrent pipelines for object detection (Faster R-CNN via TensorFlow Object Detection API), OCR (handwritten CNN+RNN with CTC; scene text via EasyOCR), face recognition (MTCNN + FaceNet embeddings), and gesture recognition (custom CNN). Unified outputs into a text stream and delivered Bluetooth audio via eSpeak. Evaluated gesture recognition at 96.6% validation accuracy, object detection via mAP with >60% confidence threshold, and tested end-to-end latency on-device for real-time usability with manual testing and ophthalmologist consultation. Private implementation (documented in IEEE paper).",
-        links: [{ label: "Private (Academic / IEEE Paper)", href: null }]
+        links: [{ label: "IEEE Paper", href: "https://ieeexplore.ieee.org/document/9754032" }]
       }
     ];
 
     // ================
     // FEATURED TOGGLE
     // ================
-    // Curated set recruiters should see first
     const FEATURED_TITLES = new Set([
       "Multimodal Health Misinformation Detection (UIUC / WHO)",
       "Safe RAG Mental Health Copilot (Human-Centered AI)",
@@ -685,7 +684,6 @@
       const allTags = computeTags(items);
       const tags = ["All", ...allTags];
 
-      // If current filter doesn't exist in current view, reset to All
       if (filterState.active !== "All" && !tags.includes(filterState.active)) {
         filterState.active = "All";
       }
