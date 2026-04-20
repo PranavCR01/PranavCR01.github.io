@@ -673,7 +673,7 @@
     async function copyEmail(){
       try{
         await navigator.clipboard.writeText(EMAIL);
-        showToast("Email copied ✅");
+        showToast("Email copied");
       }catch(e){
         showToast("Could not copy (browser blocked).");
       }
