@@ -365,7 +365,7 @@
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://github.com/PranavCR01" target="_blank" rel="noreferrer">⭐ GitHub</a>
-          <a class="btn" href="https://https://www.linkedin.com/in/pranav-c-r-852752202/" target="_blank" rel="noreferrer">🔗 LinkedIn</a>
+          <a class="btn" href="https://linkedin.com/in/pranav-c-r-852752202/" target="_blank" rel="noreferrer">🔗 LinkedIn</a>
           <a class="btn" href="./resume.pdf" target="_blank" rel="noreferrer">📄 Resume</a>
           <button class="btn" id="copyEmailBtn">📧 Copy Email</button>
         </div>
@@ -528,7 +528,7 @@
       {
         title: "Multimodal Health Misinformation Detection (UIUC / WHO)",
         blurb: "Multimodal GenAI pipeline for short-form video misinformation using ASR, OCR, LLMs, and optional PubMed grounding.",
-        tags: ["Multimodal", "LLM", "Evaluation", "RAG", "Pipelines"],
+        tags: ["Multimodal", "RAG & Retrieval"],
         details:
           "Built an end-to-end system to analyze short-form health videos where claims span audio, on-screen text, and metadata. Implemented ASR (Whisper), OCR (EasyOCR), and model-based reasoning (GPT-4, Mistral, LLaMA) with structured JSON outputs and an explicit decision layer (agent-style). Added optional grounding via PubMed MCP. Evaluated with explanation coverage (100%), JSON parsing success (>95%), latency tracking (5–25s end-to-end), prompt strategy comparisons across models, and manual transcript review to identify failure modes. Enabled scalable analysis of 120+ real-world videos and replaced manual review with explainable structured outputs for research collaboration with WHO stakeholders.",
         links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/tiktok-misinformation-tool" }]
@@ -536,7 +536,7 @@
       {
         title: "Safe RAG Mental Health Copilot (Human-Centered AI)",
         blurb: "Safety-first RAG agent for exam anxiety with citation grounding, crisis-tier abstention, and auditable logs.",
-        tags: ["RAG", "Safety", "LLM", "FastAPI", "Evaluation"],
+        tags: ["RAG & Retrieval", "Safety"],
         details:
           "Built a conversational agent designed for sensitive mental-health contexts where hallucinations and unsafe advice are unacceptable. Implemented FAISS retrieval over curated clinical sources (WHO/CDC/APA), session-aware memory, rule-based risk classification, and crisis-tier abstention (refuse + escalate). Built FastAPI backend, Streamlit UI, and SQLite audit logs for transparency. Evaluated with 100% citation rate, structured response validity (>95%), 0 unsafe responses across 40+ high-risk scenarios, and human rubric review for empathy and safety behavior.",
         links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/safe-rag-mental-health-copilot" }]
@@ -544,7 +544,7 @@
       {
         title: "AIDE-OSS: AI Cybersecurity Assistant for Log Intelligence",
         blurb: "Retrieval-augmented, agent-style assistant for Zeek network logs with anomaly detection and session-aware investigations.",
-        tags: ["Cybersecurity", "RAG", "Agents", "ML", "Pipelines"],
+        tags: ["RAG & Retrieval", "Agents"],
         details:
           "Implemented a system to automate time-consuming security log investigation and correlation across sessions, IPs, and protocols. Built ingestion for Zeek logs, semantic search with FAISS, and multi-step agent workflows for investigation. Combined classical ML (Isolation Forest), log structuring (Drain3), and LLM reasoning (Mistral). Evaluated via manual validation of anomaly relevance, session-level coherence checks, retrieval success tracking, and before/after comparisons vs single-turn log queries. Result: reduced manual correlation work and enabled session-aware analysis instead of isolated queries.",
         links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/AIDE-OSS" }]
@@ -552,7 +552,7 @@
       {
         title: "Salesforce LLM Copilot (NL → SOQL)",
         blurb: "LLM-powered CRM copilot translating natural language to reliable SOQL with schema-aware validation and guardrails.",
-        tags: ["Agents", "NLP", "Validation", "FastAPI", "LLM"],
+        tags: ["Agents"],
         details:
           "Built an AI-enabled Salesforce assistant to help business users query CRM data without writing SOQL. Implemented schema-aware reliability checks to reduce hallucinated fields and invalid queries, with explicit validation rather than free-form generation. Used DeepSeek/Mistral with tool orchestration, FastAPI service layer, Ollama for local inference, and simple_salesforce integration. Evaluated via query execution success rate, hallucination reduction through schema checks, manual baseline comparisons, plus latency/error analysis.",
         links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01" }] // unchanged
@@ -560,7 +560,7 @@
       {
         title: "AutoResearcher: Medical Literature RAG System",
         blurb: "RAG-based research assistant for biomedical literature retrieval and evidence-backed synthesis with citations.",
-        tags: ["RAG", "LLM", "Search", "FastAPI", "Pipelines"],
+        tags: ["RAG & Retrieval"],
         details:
           "Built a medical-domain RAG system to reduce time spent on repetitive literature review. Implemented ingestion from PubMed/PMC, FAISS retrieval, and a synthesis pipeline producing structured, cited summaries (not generic summarization). Built supporting services in Python/FastAPI. Evaluated with retrieval relevance checks, citation correctness review, latency benchmarking, and human review of summaries. Outcome: accelerated literature workflows and enabled evidence-backed synthesis for academic research use cases.",
         links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01" }] // unchanged
@@ -568,7 +568,7 @@
       {
         title: "Contextual Fraud Detection with Generative AI",
         blurb: "Hybrid pipeline using LLMs as feature generators to boost fraud classification with classical ML (F1 = 0.978).",
-        tags: ["GenAI", "ML", "Evaluation", "FinTech"],
+        tags: ["ML & Data", "FinTech"],
         details:
           "Built a fraud detection pipeline that augments structured transaction data with LLM-generated contextual features. Used GPT-4o for neutral transaction descriptions, T5-small for summarization, TF-IDF + One-Hot encoding, and Logistic Regression (L1/L2) for classification. Addressed imbalance with SMOTE and implemented regex-based bias neutralization to reduce leakage/bias risk. Achieved best F1 = 0.978 and cross-validation mean accuracy = 0.9707, with baseline vs context-augmented comparisons and metric tracking across classes. Demonstrated interpretable GenAI-augmented features suitable for regulated environments.",
         links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/contextual-fraud-detection-genai" }]
@@ -578,7 +578,7 @@
       {
         title: "Credit Line Optimization Framework (Top 10 — Synchrony Datathon @ UIUC 2025)",
         blurb: "End-to-end ML decision pipeline: spend forecasting → risk segmentation → credit line recommendation.",
-        tags: ["ML", "FinTech", "Decisioning", "Evaluation"],
+        tags: ["ML & Data", "FinTech"],
         details:
           "Built a framework to forecast customer spend, segment credit risk, and recommend personalized credit line adjustments using anonymized financial behavior data. Implemented spend forecasting with Gradient Boosting Regressor (R² = 0.9985), risk segmentation with XGBoost + SMOTE (88% accuracy), and credit line recommendation with Random Forest Regressor (MAE = $3.38). Included feature engineering, model comparisons, cross-validation, and diagnostics via Jupyter. Outcome: identified high-value customers for safe growth, flagged high-risk accounts, and placed Top 10 in the Synchrony Datathon @ UIUC 2025.",
         links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/credit-line-optimizer" }]
@@ -586,7 +586,7 @@
       {
         title: "DxbAgent: Real Estate Investment & Outreach Assistant",
         blurb: "Local modular agent system combining ROI analytics, RAG over Dubai laws, and LLM outreach in Streamlit.",
-        tags: ["Agents", "RAG", "LLM", "Systems", "Streamlit"],
+        tags: ["Agents", "RAG & Retrieval"],
         details:
           "Built a Streamlit-based AI assistant for Dubai real estate investing that unifies ROI/rental yield analytics, a RAG FAQ chatbot over Dubai property laws (PDFs), and LLM-powered WhatsApp outreach generation. Used Mistral via Ollama (local inference), FAISS + MiniLM embeddings for retrieval, and LangChain for RAG orchestration. Added prompt caching and CSV upload/download workflows for usability and latency improvements. Evaluated informally by verifying responses against source PDFs, measuring latency improvements from local inference + caching, and A/B comparing outreach message quality.",
         links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/DxbAgent" }]
@@ -594,7 +594,7 @@
       {
         title: "Automated Stock Market Analysis (Multi-Agent LLM System)",
         blurb: "CrewAI multi-agent pipeline: financials + FinBERT sentiment + analyst consensus → explainable recommendations.",
-        tags: ["Agents", "Evaluation", "NLP", "LLM"],
+        tags: ["Agents", "FinTech"],
         details:
           "Built a multi-agent system for automated stock analysis that synthesizes real-time financial data (Yahoo Finance), news sentiment (Google News + SerpAPI + FinBERT), and analyst consensus. Orchestrated role-specific agents in CrewAI (stock identifier, financials, sentiment, consensus, final reasoning). Evaluated recommendations against TipRanks analyst consensus and used BERTScore to measure alignment of AI justifications with analyst rationale (BERTScore F1 consistently > 0.82 across NVDA/TSLA/GME; NVDA F1 ≈ 0.93). Outcome: unified fragmented signals into a single explainable pipeline and demonstrated agent orchestration + evaluation + interpretability.",
         links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/automated-stock-market-analysis" }]
@@ -602,7 +602,7 @@
       {
         title: "Weather-Aware Roadtrip Planner + Spotify Playlist Generator",
         blurb: "Geospatial + weather scoring pipeline that recommends cool-weather trips and generates playlists aligned with route mood.",
-        tags: ["Data", "APIs", "Visualization"],
+        tags: ["ML & Data"],
         details:
           "Built a data-driven roadtrip planner using OpenWeatherMap + Spotify APIs. Implemented rule-based weather scoring and mood mapping, route sampling, Haversine filtering, and interactive route visualization with Folium. Filtered 1000+ candidate locations to shortlist optimal cool-weather routes (threshold < 25°C). Validated through real-world trip execution and generated a 9+ hour Spotify playlist aligned with route weather moods.",
         links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/roadtrip-project" }]
@@ -610,7 +610,7 @@
       {
         title: "Banking & Credit Card Complaints Analysis (CFPB)",
         blurb: "Tableau + Power BI storytelling to uncover complaint hotspots, resolution delays, and systemic service issues.",
-        tags: ["Analytics", "Visualization", "FinTech"],
+        tags: ["ML & Data", "FinTech"],
         details:
           "Analyzed CFPB complaint datasets using Tableau Prep for cleaning and transformation and built interactive dashboards in Power BI. Performed aggregations, trend analysis, demographic segmentation, and drill-down exploration across company, geography, issue type, and resolution status. Evaluated via consistency checks across years/categories and cross-dashboard validation of trends. Outcome: identified complaint hotspots and service gaps, highlighted resolution delays, and produced reusable dashboards and a formal project report for stakeholder decision-making.",
         links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/banking-credit-complaints-analysis" }]
@@ -618,7 +618,7 @@
       {
         title: "Statistical Analysis of Chicago Crime (2019–2024)",
         blurb: "Longitudinal R analysis of crime trends, seasonality, arrest rates, and geographic hotspots with reproducible scripts.",
-        tags: ["Analytics", "R", "Visualization"],
+        tags: ["ML & Data"],
         details:
           "Pulled Chicago Data Portal crime data (2019–2024) and conducted statistical + longitudinal analysis in R, focusing on interpretability rather than black-box prediction. Analyzed year-over-year trends (including COVID-era shifts), seasonal spikes (~15–20% summer increase), arrest vs non-arrest rates by crime category, and location density via heatmaps. Organized work as modular R scripts answering specific research questions and produced a final analytical report.",
         links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/chicago-crime-analysis-2019-2024" }]
@@ -626,7 +626,7 @@
       {
         title: "Mishathi: Smart Vision System (Raspberry Pi Assistive AI)",
         blurb: "Edge multimodal system combining object detection, OCR, face recognition, and gesture recognition with real-time audio assistance.",
-        tags: ["Multimodal", "Computer Vision", "Edge", "Systems"],
+        tags: ["Multimodal"],
         details:
           "Built a Raspberry Pi–based assistive vision system providing real-time audio feedback for visually impaired users. Implemented concurrent pipelines for object detection (Faster R-CNN via TensorFlow Object Detection API), OCR (handwritten CNN+RNN with CTC; scene text via EasyOCR), face recognition (MTCNN + FaceNet embeddings), and gesture recognition (custom CNN). Unified outputs into a text stream and delivered Bluetooth audio via eSpeak. Evaluated gesture recognition at 96.6% validation accuracy, object detection via mAP with >60% confidence threshold, and tested end-to-end latency on-device for real-time usability with manual testing and ophthalmologist consultation. Private implementation (documented in IEEE paper).",
         links: [{ label: "IEEE Paper", href: "https://ieeexplore.ieee.org/document/9754032" }]
@@ -716,15 +716,16 @@
         const cls = (t === filterState.active) ? "filter active" : "filter";
         return `<span class="${cls}" data-tag="${t}">${t}</span>`;
       }).join("");
-
-      filtersEl.querySelectorAll(".filter").forEach(el=>{
-        el.addEventListener("click", () => {
-          filterState.active = el.dataset.tag;
-          renderFilters();
-          renderGrid();
-        });
-      });
     }
+
+    // Event delegation: one listener on the parent, survives innerHTML rebuilds
+    filtersEl.addEventListener("click", (e) => {
+      const el = e.target.closest(".filter");
+      if (!el) return;
+      filterState.active = el.dataset.tag;
+      renderFilters();
+      renderGrid();
+    });
 
     function renderGrid(){
       const selected = filterState.active;
