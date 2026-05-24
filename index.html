@@ -531,8 +531,9 @@
         tags: ["Agents", "RAG & Retrieval"],
         details: "Built for enterprise recon teams running Salesforce FSC against DB2/Snowflake — the same failure patterns repeat daily and the diagnostic logic is tribal knowledge encoded in Excel. ReconAI automates the full triage workflow: LangGraph state machine with 7 hypothesis branches (DB2 history, Splunk CDC triage, FLS field permissions, Apex trigger suppression, DataWeave transform, RAG fallback), early termination at confidence > 0.75, and SSE streaming so P1 incidents surface first. Benchmarked across 3 LLM configs: Claude Sonnet (70% accuracy, $0.006/incident), Groq Llama 3.3 70B (62%, $0.001), Hybrid (67%, best calibration). All three configs failed on the same 11 incidents — Splunk misrouting and CDC field exclusion — graph-level issues, not model-level. RAG pipeline uses pgvector HNSW over 23 FSC seed artifacts with pre-filter + ANN + LLM reranker. Resolution form feeds confirmed RCAs back into the store so organizational memory accumulates. Auto-generates postmortem draft and Jira summary per incident. Every LLM claim requires ≥1 cited evidence row; propose_replay always gated behind human approval.",
         links: [
-          { label: "Live Demo", href: "https://recon-ai-iota.vercel.app" },
-          { label: "GitHub Repo", href: "https://github.com/PranavCR01" }
+          { label: "Live App", href: "https://recon-ai-iota.vercel.app" },
+          { label: "GitHub Repo", href: "https://github.com/PranavCR01/reconAI" }
+          { label: "Demo Video:", href: "https://youtu.be/cEzxQ1xfltU" }
         ]
       },
       {
@@ -541,8 +542,9 @@
         tags: ["Agents", "FinTech"],
         details: "Procurement AI (Coupa, Ariba, Astra) is entirely buyer-side. Suppliers spend $260K+/year per company responding manually to RFPs, compliance requests, and ESG surveys across 10+ fragmented portals. Built as a pitch artifact for Valorant (procurement AI, Chicago) — the insight being that Astra's data quality problem originates on the supplier side. Features: supplier profile hub with live cert expiry badges, smart inbox across 5 request types (RFP/RFQ/compliance/onboarding/ESG) with priority badges and deadline countdowns, AI response generator with SSE streaming, RFP gap analysis, buyer tone insight, ESG auto-complete, TipTap rich text editor with Gmail-aware HTML paste, and compliance tracker with buyer health dashboard. 7 Claude Haiku-powered features with prompt caching on the system prompt for cost efficiency. Key engineering: SSE via fetch() not EventSource (EventSource can't send Authorization headers), tsx runtime in production on Railway to sidestep ESM/CommonJS compilation failures, dynamic cert status computed from expiry_date on every render — never trusted from DB.",
         links: [
-          { label: "Live Demo", href: "https://supplier-command-center.vercel.app" },
+          { label: "Live App", href: "https://supplier-command-center.vercel.app" },
           { label: "GitHub (Private)", href: "https://github.com/PranavCR01/supplier-command-center" }
+          { label: "Demo Video", href: "https://youtu.be/QuXizVA_QDc" },
         ]
       },
       {
@@ -553,7 +555,6 @@
         links: [
           { label: "Live App", href: "https://adcreative-intel.vercel.app" },
           { label: "GitHub Repo", href: "https://github.com/PranavCR01/adcreative-intel" },
-          { label: "Model (HF)", href: "https://pcr12-creative-intelligence-scorer.hf.space" }
         ]
       },
       {
