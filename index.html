@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pranav Charakondala | AI Engineer</title>
+  <meta name="description" content="AI Engineer portfolio — ML Systems, Applied GenAI, evaluation, and production ML." />
+
+  <style>
+    :root{
+      --bg: #0b1220;
+      --bg2:#0f172a;
+      --card:#0b1b35;
+      --text:#e5e7eb;
+      --muted:#a7b0c0;
+      --border: rgba(255,255,255,.10);
+      --accent:#38bdf8;
+      --accent2:#22c55e;
+      --shadow: 0 16px 40px rgba(0,0,0,.35);
+      --ring: 0 0 0 3px rgba(56,189,248,.25);
+    }
+    [data-theme="light"]{
+      --bg:#f6f7fb;
+      --bg2:#ffffff;
+      --card:#ffffff;
+      --text:#0b1220;
+      --muted:#465066;
+      --border: rgba(11,18,32,.12);
+      --accent:#0ea5e9;
+      --accent2:#16a34a;
+      --shadow: 0 16px 40px rgba(0,0,0,.10);
+      --ring: 0 0 0 3px rgba(14,165,233,.25);
+    }
+
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(1200px 700px at 30% -10%, rgba(56,189,248,.18), transparent 60%),
+                  radial-gradient(900px 600px at 80% 0%, rgba(34,197,94,.14), transparent 55%),
+                  linear-gradient(180deg, var(--bg), var(--bg2));
+      color: var(--text);
+    }
+    a{ color: var(--accent); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+    .container{ max-width: 1050px; margin: 0 auto; padding: 28px 18px 80px; }
+
+    .topbar{
+      position: sticky; top: 0; z-index: 30;
+      backdrop-filter: blur(10px);
+      background: color-mix(in srgb, var(--bg2) 70%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+    .topbar-inner{
+      max-width: 1050px; margin: 0 auto;
+      padding: 12px 18px;
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:700; letter-spacing:.2px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(56,189,248,.12);
+    }
+    nav{
+      display:flex; gap:14px; align-items:center; flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .navlink{
+      font-size: 13px; color: var(--muted);
+      padding: 8px 10px; border-radius: 10px;
+      border:1px solid transparent;
+    }
+    .navlink:hover{ color: var(--text); border-color: var(--border); text-decoration:none; }
+    .btn{
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--card) 72%, transparent);
+      color: var(--text);
+      padding: 9px 12px;
+      border-radius: 12px;
+      cursor:pointer;
+      box-shadow: none;
+      font-size: 13px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      user-select:none;
+    }
+    .btn:hover{ box-shadow: var(--shadow); transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0px); }
+    .btn-primary{
+      border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+      background: color-mix(in srgb, var(--accent) 18%, var(--card));
+    }
+    .btn:focus{ outline:none; box-shadow: var(--ring); }
+    .btn[disabled]{ opacity:.6; cursor:not-allowed; transform:none; box-shadow:none; }
+
+    .hero{
+      padding: 56px 0 22px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 22px;
+      align-items: start;
+    }
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+    }
+    .card{
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--card) 80%, transparent);
+      border-radius: 18px;
+      box-shadow: none;
+    }
+    .hero-main{ padding: 26px 22px; }
+    .kicker{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 10px;
+      flex-wrap:wrap;
+    }
+    .pill{
+      border:1px solid var(--border);
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--bg2) 60%, transparent);
+      font-size: 12px;
+      white-space:nowrap;
+    }
+    h1{ margin: 8px 0 10px; font-size: 44px; letter-spacing: -.6px; }
+    @media (max-width: 520px){ h1{ font-size: 36px; } }
+    .subtitle{ color: var(--muted); line-height: 1.6; }
+    .hero-actions{ margin-top: 16px; display:flex; flex-wrap:wrap; gap:10px; }
+    .quick{
+      padding: 18px;
+      display:grid;
+      gap: 12px;
+    }
+    .stat{
+      padding: 14px 14px;
+      border-radius: 14px;
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--bg2) 70%, transparent);
+    }
+    .stat .label{ color: var(--muted); font-size: 12px; }
+    .stat .value{ margin-top: 6px; font-weight: 700; }
+
+    section{ margin-top: 28px; }
+    .section-title{
+      display:flex; align-items:end; justify-content:space-between; gap:14px;
+      margin: 10px 0 12px;
+    }
+    .section-title h2{ margin:0; font-size: 20px; letter-spacing: -.2px; }
+    .section-title p{ margin:0; color: var(--muted); font-size: 13px; }
+
+    .chips{ display:flex; flex-wrap:wrap; gap:10px; padding: 16px; }
+    .chip{
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--bg2) 70%, transparent);
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 13px;
+      color: var(--text);
+      cursor: default;
+      display:inline-flex; align-items:center; gap:8px;
+    }
+    .chip b{ font-weight:700; }
+    .chip small{ color: var(--muted); }
+
+    .filters{
+      display:flex; flex-wrap:wrap; gap:8px;
+      padding: 12px 16px 0;
+    }
+    .filter{
+      cursor:pointer;
+      user-select:none;
+      border:1px solid var(--border);
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--muted);
+      background: color-mix(in srgb, var(--bg2) 70%, transparent);
+    }
+    .filter.active{
+      color: var(--text);
+      border-color: color-mix(in srgb, var(--accent) 60%, var(--border));
+      background: color-mix(in srgb, var(--accent) 16%, var(--bg2));
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      padding: 14px;
+    }
+    @media (max-width: 980px){ .grid{ grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 640px){ .grid{ grid-template-columns: 1fr;} }
+
+    .proj{
+      padding: 14px;
+      border-radius: 16px;
+      border:1px solid var(--border);
+      background: color-mix(in srgb, var(--bg2) 70%, transparent);
+      cursor:pointer;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      min-height: 140px;
+    }
+    .proj:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+      border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+    }
+    .proj h3{ margin: 0 0 8px; font-size: 16px; letter-spacing: -.2px; }
+    .proj p{ margin: 0 0 10px; color: var(--muted); font-size: 13px; line-height: 1.45; }
+    .tags{ display:flex; flex-wrap:wrap; gap:6px; }
+    .tag{
+      font-size: 11px;
+      padding: 5px 8px;
+      border:1px solid var(--border);
+      border-radius: 999px;
+      color: var(--muted);
+    }
+    .proj .meta{
+      margin-top: 10px;
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .projbar{
+      padding: 0 14px 14px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap: 10px;
+      flex-wrap:wrap;
+    }
+    .projbar .left{
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .timeline{ padding: 16px; display:grid; gap:12px; }
+    .titem{
+      display:grid;
+      grid-template-columns: 130px 1fr;
+      gap: 12px;
+      padding: 12px;
+      border:1px solid var(--border);
+      border-radius: 16px;
+      background: color-mix(in srgb, var(--bg2) 70%, transparent);
+    }
+    @media (max-width: 640px){ .titem{ grid-template-columns: 1fr; } }
+    .tdate{ color: var(--muted); font-size: 12px; }
+    .tmain b{ display:block; margin-bottom: 4px; }
+    .tmain{ color: var(--text); }
+    .tmain small{ color: var(--muted); display:block; line-height:1.5; }
+
+    footer{
+      margin-top: 34px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align:center;
+      padding: 16px 0 0;
+    }
+
+    .modal-wrap{
+      position: fixed; inset: 0; z-index: 50;
+      display:none; place-items:center;
+      background: rgba(0,0,0,.55);
+      padding: 18px;
+    }
+    .modal{
+      width: min(820px, 96vw);
+      border-radius: 18px;
+      border:1px solid var(--border);
+      background: var(--bg2);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .modal-head{
+      padding: 16px 16px 12px;
+      border-bottom: 1px solid var(--border);
+      display:flex; justify-content:space-between; align-items:flex-start; gap:10px;
+    }
+    .modal-head h3{ margin:0; font-size: 18px; }
+    .modal-body{ padding: 14px 16px 16px; color: var(--text); }
+    .modal-body p{ color: var(--muted); line-height:1.65; margin: 0 0 12px; }
+    .modal-actions{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 10px; }
+    .xbtn{
+      border:1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      padding: 7px 10px;
+      border-radius: 12px;
+      cursor:pointer;
+    }
+    .xbtn:hover{ color: var(--text); border-color: color-mix(in srgb, var(--accent) 40%, var(--border)); }
+
+    .toast{
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      transform: translateX(-50%);
+      background: color-mix(in srgb, var(--bg2) 88%, transparent);
+      border: 1px solid var(--border);
+      padding: 10px 12px;
+      border-radius: 12px;
+      color: var(--text);
+      font-size: 13px;
+      display:none;
+      z-index: 60;
+      box-shadow: var(--shadow);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <span class="dot"></span>
+        <span>Pranav</span>
+      </div>
+      <nav>
+        <a class="navlink" href="#projects">Projects</a>
+        <a class="navlink" href="#skills">Skills</a>
+        <a class="navlink" href="#timeline">Timeline</a>
+        <a class="navlink" href="#contact">Contact</a>
+        <button class="btn" id="themeBtn" title="Toggle theme">🌓 Theme</button>
+      </nav>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="hero">
+      <div class="card hero-main">
+        <div class="kicker">
+          <span class="pill">AI Engineer</span>
+          <span class="pill">ML Systems</span>
+          <span class="pill">Applied GenAI</span>
+          <span class="pill">Evaluation</span>
+          <span class="pill">RAG & Agents</span>
+        </div>
+        <h1>Pranav Charakondala</h1>
+        <p class="subtitle">
+          MS in Information Management @ UIUC. Focused on ML systems, LLM evaluation, and production AI.
+          I build end-to-end pipelines: data &rarr; models &rarr; evaluation &rarr; deployment.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://github.com/PranavCR01" target="_blank" rel="noreferrer">⭐ GitHub</a>
+          <a class="btn" href="https://linkedin.com/in/pranav-c-r-852752202/" target="_blank" rel="noreferrer">🔗 LinkedIn</a>
+          <a class="btn" href="./resume.pdf" target="_blank" rel="noreferrer">📄 Resume</a>
+          <button class="btn" id="copyEmailBtn">📧 Copy Email</button>
+        </div>
+      </div>
+
+      <div class="card quick">
+        <div class="stat">
+          <div class="label">Focus</div>
+          <div class="value">LLM eval • RAG • agentic systems • multimodal pipelines</div>
+        </div>
+        <div class="stat">
+          <div class="label">Strength</div>
+          <div class="value">Shipping usable AI systems with reliability checks</div>
+        </div>
+        <div class="stat">
+          <div class="label">Current</div>
+          <div class="value">Open to New-Grad AI/ML roles</div>
+        </div>
+      </div>
+    </div>
+
+    <section id="projects" class="card">
+      <div class="section-title" style="padding:16px 16px 0;">
+        <div>
+          <h2>Projects</h2>
+          <p>Click a project to open details. Use tags to filter.</p>
+        </div>
+      </div>
+      <div class="filters" id="filters"></div>
+      <div class="projbar">
+        <div class="left" id="projCount"></div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn btn-primary" id="toggleFeaturedBtn">✨ View All Projects</button>
+        </div>
+      </div>
+      <div class="grid" id="projectGrid"></div>
+    </section>
+
+    <section id="skills" class="card">
+      <div class="section-title" style="padding:16px 16px 0;">
+        <div>
+          <h2>Skills</h2>
+          <p>End-to-end engineering + evaluation mindset.</p>
+        </div>
+      </div>
+      <div class="chips">
+        <div class="chip"><b>Python</b> <small>pipelines • APIs • data</small></div>
+        <div class="chip"><b>LLMs</b> <small>GPT • Mistral • LLaMA • DeepSeek</small></div>
+        <div class="chip"><b>RAG</b> <small>FAISS • pgvector • embeddings • citations</small></div>
+        <div class="chip"><b>Agents</b> <small>LangGraph • CrewAI • tool use • orchestration</small></div>
+        <div class="chip"><b>Evaluation</b> <small>rubrics • regressions • metrics</small></div>
+        <div class="chip"><b>MLOps</b> <small>Docker • reproducibility • CI</small></div>
+        <div class="chip"><b>Data</b> <small>feature pipelines • imbalance</small></div>
+        <div class="chip"><b>Viz</b> <small>Tableau • Power BI • Folium</small></div>
+      </div>
+    </section>
+
+    <section id="timeline" class="card">
+      <div class="section-title" style="padding:16px 16px 0;">
+        <div><h2>Timeline</h2></div>
+      </div>
+      <div class="timeline">
+        <div class="titem">
+          <div class="tdate">May 2025 — Present</div>
+          <div class="tmain">
+            <b>Center for Health Informatics, UIUC — Research Lead, Applied AI</b>
+            <small>Led production-oriented multimodal GenAI system for health misinformation analysis (ASR + OCR + LLM decision layer + evaluation) across 120+ clips in collaboration with WHO.</small>
+          </div>
+        </div>
+        <div class="titem">
+          <div class="tdate">2024 — Present</div>
+          <div class="tmain">
+            <b>MS in Information Management — UIUC</b>
+            <small>Applied ML, NLP, data science, and production-oriented AI engineering.</small>
+          </div>
+        </div>
+        <div class="titem">
+          <div class="tdate">June 2022 — July 2024</div>
+          <div class="tmain">
+            <b>Deloitte Consulting (US Offices of India) — Analyst</b>
+            <small>Built and optimized Salesforce features and integrations (APEX/LWC/APIs), improving query performance and operational workflows across large-scale deployments.</small>
+          </div>
+        </div>
+        <div class="titem">
+          <div class="tdate">Jan 2022 — June 2022</div>
+          <div class="tmain">
+            <b>Drongo AI — Machine Learning Intern</b>
+            <small>Worked on computer-vision R&amp;D and optimized training/inference workflows for ML models; delivered applied improvements for production-style pipelines.</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="card" style="padding:16px;">
+      <div class="section-title">
+        <div>
+          <h2>Contact</h2>
+          <p>Fastest way to reach me.</p>
+        </div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button class="btn btn-primary" id="copyEmailBtn2">📧 Copy Email</button>
+        <a class="btn" href="https://github.com/PranavCR01" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn" href="https://linkedin.com/in/pranav-c-r-852752202/" target="_blank" rel="noreferrer">LinkedIn</a>
+      </div>
+    </section>
+
+    <footer>
+      Built on GitHub Pages • <span id="year"></span>
+    </footer>
+  </div>
+
+  <div class="modal-wrap" id="modalWrap" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Project details">
+      <div class="modal-head">
+        <div>
+          <h3 id="mTitle">Project Title</h3>
+          <div class="tags" id="mTags" style="margin-top:8px;"></div>
+        </div>
+        <button class="xbtn" id="closeModal">✕</button>
+      </div>
+      <div class="modal-body">
+        <ul id="mDesc" style="margin:0 0 12px;padding-left:18px;color:var(--muted);line-height:1.7;display:flex;flex-direction:column;gap:4px;"></ul>
+        <div class="modal-actions" id="mActions"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const EMAIL = "reach.pranavcr@gmail.com";
+    const LINKEDIN = "https://linkedin.com/in/pranav-c-r-852752202/";
+
+    const projects = [
+      {
+        title: "ReconAI — Salesforce FSC Integration RCA Agent",
+        blurb: "Agentic RCA pipeline replacing 2-3 hrs of daily manual reconciliation with a 7-branch hypothesis graph, RAG over 23 FSC artifacts, and real-time SSE streaming.",
+        tags: ["Agents", "RAG & Retrieval"],
+        details: ["Built for enterprise recon teams running Salesforce FSC against DB2/Snowflake — the same manual triage workflow (CSV + Splunk + Excel) repeated every morning, with diagnostic logic trapped in tribal-knowledge spreadsheets.",
+          "LangGraph state machine with 7 hypothesis branches: DB2 history check, Splunk CDC triage, FLS field permissions, CDC channel config, Apex trigger suppression, DataWeave transform deep-dive, and RAG fallback over past incidents.",
+          "Early termination when confidence crosses 0.75; P1 incidents always stream first via SSE regardless of arrival order.",
+          "Benchmarked across 3 LLM configs — Claude Sonnet (70% accuracy, $0.006/incident), Groq Llama 3.3 70B (62%, $0.001), Hybrid (67%, best calibration). All three failed on the same 11 incidents: Splunk misrouting and CDC field exclusion — graph-level issues, not model-level.",
+          "RAG pipeline: pgvector HNSW over 23 FSC seed artifacts, pre-filter + ANN + LLM reranker. Resolution form feeds confirmed RCAs back into the store so organizational memory accumulates.",
+          "Auto-generates postmortem draft and Jira summary per incident. Every LLM claim requires ≥1 cited evidence row; propose_replay always gated behind human approval."],
+        links: [
+          { label: "Live App", href: "https://recon-ai-iota.vercel.app" },
+          { label: "GitHub Repo", href: "https://github.com/PranavCR01/reconAI" },
+          { label: "Demo Video", href: "https://youtu.be/cEzxQ1xfltU" }
+        ]
+      },
+      {
+        title: "Supplier Command Center",
+        blurb: "AI-powered supplier portal — the missing supplier-side complement to enterprise procurement AI platforms like Astra.",
+        tags: ["Agents", "FinTech"],
+        details: ["Procurement AI (Coupa, Ariba, Astra) is entirely buyer-side. Suppliers spend $260K+/year responding manually to RFPs, compliance requests, and ESG surveys across 10+ fragmented portals — this app gives them one place to manage all of it.",
+          "Built as a pitch artifact for Valorant (procurement AI, Chicago): Astra's data quality problem originates on the supplier side, so a supplier platform doesn't compete with Astra — it makes Astra's agents more effective.",
+          "Features: supplier profile hub with live cert expiry badges, smart inbox across 5 request types (RFP/RFQ/compliance/onboarding/ESG) with priority badges and deadline countdowns, compliance tracker with per-buyer gap surfacing.",
+          "AI layer: 7 Claude Haiku-powered features — SSE streaming draft responses, RFP gap analysis, buyer tone insight, ESG survey auto-complete. Prompt caching on system prompt keeps API costs low.",
+          "Key engineering decisions: SSE via fetch() not EventSource (EventSource can't send Authorization headers), tsx runtime in production on Railway to sidestep ESM/CommonJS compilation failures, cert status computed from expiry_date on every render — never trusted from DB."],
+        links: [
+          { label: "Live App", href: "https://supplier-command-center.vercel.app" },
+          { label: "GitHub (Private)", href: "https://github.com/PranavCR01/supplier-command-center" },
+          { label: "Demo Video", href: "https://youtu.be/QuXizVA_QDc" }
+        ]
+      },
+      {
+        title: "Creative Intelligence Agent (CIA)",
+        blurb: "Fine-tuned CLIP model predicting ad CTR and fatigue half-life from images, with a grounded Claude Haiku agentic layer for creative analysis.",
+        tags: ["Multimodal", "ML & Data"],
+        details: ["No public ad CTR dataset exists, so built one: scraped Meta Ad Library via Apify (16% real), augmented synthetically to 22,248 ads across gaming, ecommerce, and finance.",
+          "Model: multi-task MLP head on top of frozen SigLIP 2 (93M params, 197K trainable). Task 1 = CTR via BCE loss, task 2 = fatigue half-life via Weibull NLL — survival analysis. Most industry tools only predict CTR, not wear-out.",
+          "Grad-CAM generates attention heatmaps showing which visual regions drive engagement.",
+          "Agentic layer: Claude Haiku with native Anthropic tool use (not text-based ReAct), 5 tools (get_creative_score, get_heatmap_regions, get_benchmark, get_fatigue_projection, get_improvement_suggestions), max 7 reasoning steps. Agent cannot state any number not returned by a tool call.",
+          "Spearman r=0.645 on real-only held-out test set of 382 samples. Inference runs on HuggingFace Spaces CPU — GPU-free in production."],
+        links: [
+          { label: "Live App", href: "https://adcreative-intel.vercel.app" },
+          { label: "GitHub Repo", href: "https://github.com/PranavCR01/adcreative-intel" },
+          { label: "Model (HF)", href: "https://pcr12-creative-intelligence-scorer.hf.space" }
+        ]
+      },
+      {
+        title: "Multimodal Health Misinformation Detection (UIUC / WHO)",
+        blurb: "Multimodal GenAI pipeline for short-form video misinformation using ASR, OCR, LLMs, and optional PubMed grounding.",
+        tags: ["Multimodal", "RAG & Retrieval"],
+        details: ["Production-grade AI platform for detecting health misinformation in short-form video (TikTok, Reels, Shorts) for WHO researchers. Designed full system architecture and led a team of 12.",
+          "Multimodal pipeline: Whisper ASR, EasyOCR, and LLM classification (Claude, GPT-4, Mistral, LLaMA) with LangChain LCEL orchestration (prompt | llm | PydanticOutputParser) for structured, schema-enforced outputs.",
+          "Custom async RAG pipeline grounding verdicts in PubMed peer-reviewed literature via parallel E-utilities queries.",
+          "Deployed on Vercel, Railway, Supabase, and Upstash Redis with Celery for async job processing, Supabase Auth for JWT-based access control, and Alembic for schema migrations.",
+          "Classified videos into four labels (MISINFO, NO_MISINFO, DEBUNKING, CANNOT_RECOGNIZE) with natural language explanations and linked citations per verdict.",
+          "End-to-end latency under 10 seconds in production. Evaluated with explanation coverage (100%), JSON parsing success (>95%), and manual transcript review to identify failure modes."],
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/tiktok-misinformation-tool" }]
+      },
+      {
+        title: "Safe RAG Mental Health Copilot (Human-Centered AI)",
+        blurb: "Safety-first RAG agent for exam anxiety with citation grounding, crisis-tier abstention, and auditable logs.",
+        tags: ["RAG & Retrieval", "Safety"],
+        details: ["Conversational agent for sensitive mental-health contexts where hallucinations and unsafe advice are unacceptable — built specifically for exam anxiety support.",
+          "FAISS retrieval over curated clinical sources (WHO/CDC/APA), session-aware memory, rule-based risk classification, and crisis-tier abstention (refuse + escalate when distress signals detected).",
+          "FastAPI backend, Streamlit UI, and SQLite audit logs for full transparency and reviewability.",
+          "Evaluated with 100% citation rate, structured response validity (>95%), and 0 unsafe responses across 40+ high-risk adversarial scenarios."],
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/safe-rag-mental-health-copilot" }]
+      },
+      {
+        title: "AIDE-OSS: AI Cybersecurity Assistant for Log Intelligence",
+        blurb: "Retrieval-augmented, agent-style assistant for Zeek network logs with anomaly detection and session-aware investigations.",
+        tags: ["RAG & Retrieval", "Agents"],
+        details: ["Agent-style assistant that automates time-consuming security log investigation and correlation across sessions, IPs, and protocols for Zeek network logs.",
+          "Built ingestion for Zeek logs, semantic search with FAISS, and multi-step agent workflows for investigation. Combined classical ML (Isolation Forest), log structuring (Drain3), and LLM reasoning (Mistral).",
+          "Evaluated via manual validation of anomaly relevance, session-level coherence checks, retrieval success tracking, and before/after comparisons vs single-turn log queries.",
+          "Result: reduced manual correlation work and enabled session-aware analysis instead of isolated per-event queries."],
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/AIDE-OSS" }]
+      },
+      {
+        title: "Salesforce LLM Copilot (NL → SOQL)",
+        blurb: "LLM-powered CRM copilot translating natural language to reliable SOQL with schema-aware validation and guardrails.",
+        tags: ["Agents"],
+        details: ["AI-enabled Salesforce assistant that lets business users query CRM data in plain English — no SOQL knowledge required.",
+          "Schema-aware validation layer reduces hallucinated fields and invalid queries; explicit schema checks rather than free-form generation.",
+          "Stack: DeepSeek/Mistral with tool orchestration, FastAPI service layer, Ollama for local inference, simple_salesforce integration.",
+          "Evaluated via query execution success rate, hallucination reduction through schema checks, and manual baseline comparisons."],
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01" }]
+      },
+      {
+        title: "AutoResearcher: Medical Literature RAG System",
+        blurb: "RAG-based research assistant for biomedical literature retrieval and evidence-backed synthesis with citations.",
+        tags: ["RAG & Retrieval"],
+        details: ["Medical-domain RAG system that automates repetitive literature review — produces structured, cited summaries rather than generic text.",
+          "Ingestion from PubMed/PMC, FAISS retrieval, synthesis pipeline producing evidence-backed summaries with source citations.",
+          "Evaluated with retrieval relevance checks, citation correctness review, and latency benchmarking across query types."],
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01" }]
+      },
+      {
+        title: "Contextual Fraud Detection with Generative AI",
+        blurb: "Hybrid pipeline using LLMs as feature generators to boost fraud classification with classical ML (F1 = 0.978).",
+        tags: ["ML & Data", "FinTech"],
+        details: ["Fraud detection pipeline that augments structured transaction data with LLM-generated contextual features — framing each transaction as a neutral description before classification.",
+          "GPT-4o for transaction descriptions, T5-small for summarization, TF-IDF + One-Hot encoding, Logistic Regression (L1/L2) for classification. SMOTE for class imbalance, regex-based bias neutralization to reduce label leakage.",
+          "Best F1 = 0.978, cross-validation mean accuracy = 0.9707. Baseline vs context-augmented comparison demonstrates the uplift from LLM features.",
+          "Interpretable design: LLM features are inspectable, suitable for regulated environments where black-box decisions are a compliance risk."],
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/contextual-fraud-detection-genai" }]
+      },
+      {
+        title: "Swagath Central (Freelance)",
+        blurb: "Replaced two single-screen theatres' paper-slip operations with a live profit, wastage, and AI-summary system — built through real field deployment.",
+        tags: ["Agents", "FinTech"],
+        details: ["Two single-screen theatres (Sandhya, Manasa) in Bangalore ran entirely on paper — ticket counts, food counter sales, parking revenue, all hand-tallied nightly with no visibility into per-show profit or wastage, and no way to verify under-reported collections.",
+          "Architecture: React + Vite + TypeScript + Tailwind + shadcn/ui frontend, Supabase (Postgres + RLS) backend, deployed on Vercel. Groq (Llama 3.3 70B) powers a nightly AI summary via a Vercel serverless function.",
+          "Each show logs three slip entries (Main Counter, Popcorn, Cool Drinks) tracking Opening Balance, Received stock, Closing Balance, and Wastage per item. Sale is derived as OB+REC−CB−WST, and Closing Balance automatically carries forward as the next show's Opening Balance — both within a day and across day boundaries.",
+          "Cost of Goods computed per item as (sale+wastage)×cost price, feeding Gross Profit; Net Profit subtracts manually entered operating expenses. Revenue tracked across three independent payment channels (Cash/UPI/BMS) rather than one undifferentiated total.",
+          "Carry-forward logic never trusts a static show number for ordering — it re-derives chronological order from start_time live, since the owner frequently adds shows out of time order and an index-based approach would silently corrupt opening balances.",
+          "Built a dismissible mismatch-detection system using a content-addressed fingerprint of the expected opening balance, surfacing a warning only when something has genuinely gone stale — rather than auto-correcting saved data or staying silent.",
+          "AI nightly summary reads the day's full numeric picture and returns a plain-English narrative with flagged top/under-performing items and revenue-gap alerts, plus next-day catering quantity suggestions based on matching weekday history.",
+          "Operational impact over three months: ~₹50,000 in identified savings, including ₹8,000/month in previously-untracked wastage and ~₹3,000/week in parking revenue gaps that paper tracking couldn't catch.",
+          "Found and fixed a genuine production bug: a Postgres unique-constraint deadlock in show-renumbering logic that silently corrupted show ordering until a cross-day carry-forward test surfaced it. Also caught a missing RLS INSERT policy that silently failed to save expense entries, and a stale-value bug that permanently understated UPI/Cash totals after a day was saved once."],
+        links: [
+          { label: "Live App", href: "https://swagath-central.vercel.app" },
+          { label: "GitHub (Private)", href: "https://github.com/PranavCR01/swagath-central" }
+        ]
+      },
+
+      /* ---- View All projects below ---- */
+      {
+        title: "Credit Line Optimization Framework (Top 10 — Synchrony Datathon @ UIUC 2025)",
+        blurb: "End-to-end ML decision pipeline: spend forecasting → risk segmentation → credit line recommendation.",
+        tags: ["ML & Data", "FinTech"],
+        details: ["End-to-end ML decision pipeline built for the Synchrony Datathon @ UIUC 2025 — placed Top 10.",
+          "Spend forecasting with Gradient Boosting Regressor (R² = 0.9985), risk segmentation with XGBoost + SMOTE (88% accuracy), credit line recommendation with Random Forest Regressor (MAE = $3.38).",
+          "Outcome: identified high-value customers for safe growth, flagged high-risk accounts for limit reduction."],
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/credit-line-optimizer" }]
+      },
+      {
+        title: "DxbAgent: Real Estate Investment & Outreach Assistant",
+        blurb: "Local modular agent system combining ROI analytics, RAG over Dubai laws, and LLM outreach in Streamlit.",
+        tags: ["Agents", "RAG & Retrieval"],
+        details: ["Streamlit-based AI assistant for Dubai real estate investing — unifies ROI/rental yield analytics, a RAG FAQ chatbot over Dubai property laws, and LLM-powered WhatsApp outreach generation.",
+          "Mistral via Ollama (local inference), FAISS + MiniLM embeddings for retrieval, LangChain for RAG orchestration. Prompt caching reduces latency.",
+          "Evaluated by verifying RAG responses against source PDFs and A/B comparing outreach message quality."],
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/DxbAgent" }]
+      },
+      {
+        title: "Automated Stock Market Analysis (Multi-Agent LLM System)",
+        blurb: "CrewAI multi-agent pipeline: financials + FinBERT sentiment + analyst consensus → explainable recommendations.",
+        tags: ["Agents", "FinTech"],
+        details: ["Multi-agent CrewAI pipeline synthesizing real-time financials (Yahoo Finance), news sentiment (FinBERT via SerpAPI), and analyst consensus into explainable stock recommendations.",
+          "Role-specific agents: stock identifier, financials analyst, sentiment analyst, consensus aggregator, final reasoning layer.",
+          "Evaluated against TipRanks analyst consensus using BERTScore — F1 consistently > 0.82 across NVDA/TSLA/GME; NVDA F1 ≈ 0.93."],
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/automated-stock-market-analysis" }]
+      },
+      {
+        title: "Weather-Aware Roadtrip Planner + Spotify Playlist Generator",
+        blurb: "Geospatial + weather scoring pipeline that recommends cool-weather trips and generates playlists aligned with route mood.",
+        tags: ["ML & Data"],
+        details: ["Data-driven roadtrip planner using OpenWeatherMap + Spotify APIs with rule-based weather scoring, Haversine filtering, and Folium route visualization.",
+          "Filtered 1000+ candidate locations to optimal cool-weather routes (threshold < 25°C), then generated a 9+ hour Spotify playlist matched to route weather moods.",
+          "Validated through real-world trip execution."],
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/roadtrip-project" }]
+      },
+      {
+        title: "Banking & Credit Card Complaints Analysis (CFPB)",
+        blurb: "Tableau + Power BI storytelling to uncover complaint hotspots, resolution delays, and systemic service issues.",
+        tags: ["ML & Data", "FinTech"],
+        details: ["Analyzed CFPB complaint datasets to surface complaint hotspots, resolution delays, and systemic service gaps using Tableau Prep + Power BI.",
+          "Aggregations, trend analysis, demographic segmentation, and drill-down exploration across company, geography, issue type, and resolution status.",
+          "Cross-dashboard validation for consistency; produced reusable dashboards and a formal stakeholder report."],
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/banking-credit-complaints-analysis" }]
+      },
+      {
+        title: "Statistical Analysis of Chicago Crime (2019–2024)",
+        blurb: "Longitudinal R analysis of crime trends, seasonality, arrest rates, and geographic hotspots with reproducible scripts.",
+        tags: ["ML & Data"],
+        details: ["Longitudinal analysis of Chicago crime data (2019–2024) in R — focused on interpretability over prediction.",
+          "Year-over-year trends including COVID-era shifts, seasonal spikes (~15–20% summer increase), arrest vs non-arrest rates by crime type, geographic density via heatmaps.",
+          "Organized as modular R scripts answering specific research questions, with a final analytical report."],
+        links: [{ label: "GitHub Repo", href: "https://github.com/PranavCR01/chicago-crime-analysis-2019-2024" }]
+      },
+      {
+        title: "Mishathi: Smart Vision System (Raspberry Pi Assistive AI)",
+        blurb: "Edge multimodal system combining object detection, OCR, face recognition, and gesture recognition with real-time audio assistance.",
+        tags: ["Multimodal"],
+        details: ["Raspberry Pi-based assistive vision system delivering real-time audio feedback for visually impaired users — IEEE Xplore published.",
+          "Concurrent pipelines: object detection (Faster R-CNN), OCR (handwritten CNN+RNN with CTC + EasyOCR), face recognition (MTCNN + FaceNet), gesture recognition (custom CNN). Bluetooth audio output via eSpeak.",
+          "Gesture recognition: 96.6% validation accuracy. Object detection evaluated via mAP at >60% confidence threshold. End-to-end latency tested on-device."],
+        links: [{ label: "IEEE Paper", href: "https://ieeexplore.ieee.org/document/9754032" }]
+      }
+    ];
+
+    const FEATURED_TITLES = new Set([
+      "ReconAI — Salesforce FSC Integration RCA Agent",
+      "Supplier Command Center",
+      "Creative Intelligence Agent (CIA)",
+      "Multimodal Health Misinformation Detection (UIUC / WHO)",
+      "Safe RAG Mental Health Copilot (Human-Centered AI)",
+      "Swagath Central (Freelance)"
+    ]);
+
+    // ====== THEME ======
+    const themeBtn = document.getElementById("themeBtn");
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
+    function toggleTheme(){
+      const cur = document.documentElement.getAttribute("data-theme");
+      const next = cur === "light" ? "" : "light";
+      if (next) document.documentElement.setAttribute("data-theme", next);
+      else document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem("theme", next || "");
+    }
+    themeBtn.addEventListener("click", toggleTheme);
+
+    // ====== TOAST ======
+    const toast = document.getElementById("toast");
+    let toastTimer;
+    function showToast(msg){
+      toast.textContent = msg;
+      toast.style.display = "block";
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(()=> toast.style.display="none", 1500);
+    }
+
+    // ====== COPY EMAIL ======
+    async function copyEmail(){
+      try{
+        await navigator.clipboard.writeText(EMAIL);
+        showToast("Email copied ✅");
+      }catch(e){
+        showToast("Could not copy (browser blocked).");
+      }
+    }
+    document.getElementById("copyEmailBtn").addEventListener("click", copyEmail);
+    document.getElementById("copyEmailBtn2").addEventListener("click", copyEmail);
+
+    // ====== LINKEDIN PATCH ======
+    document.querySelectorAll('a[href="https://www.linkedin.com/"]').forEach(a => a.href = LINKEDIN);
+
+    // ====== PROJECTS + FILTERS ======
+    const grid = document.getElementById("projectGrid");
+    const filtersEl = document.getElementById("filters");
+    const projCount = document.getElementById("projCount");
+    const toggleFeaturedBtn = document.getElementById("toggleFeaturedBtn");
+
+    let showAllProjects = false;
+
+    function getVisibleProjects(){
+      if (showAllProjects) return projects;
+      return projects.filter(p => FEATURED_TITLES.has(p.title));
+    }
+
+    function computeTags(items){
+      return Array.from(new Set(items.flatMap(p => p.tags))).sort();
+    }
+
+    let filterState = { active: "All" };
+
+    function renderFilters(){
+      const items = getVisibleProjects();
+      const allTags = computeTags(items);
+      const tags = ["All", ...allTags];
+      if (filterState.active !== "All" && !tags.includes(filterState.active)) {
+        filterState.active = "All";
+      }
+      filtersEl.innerHTML = tags.map(t => {
+        const cls = (t === filterState.active) ? "filter active" : "filter";
+        return `<span class="${cls}" data-tag="${t}">${t}</span>`;
+      }).join("");
+    }
+
+    // Event delegation: one listener, survives innerHTML rebuilds
+    filtersEl.addEventListener("click", (e) => {
+      const el = e.target.closest(".filter");
+      if (!el) return;
+      filterState.active = el.dataset.tag;
+      renderFilters();
+      renderGrid();
+    });
+
+    function renderGrid(){
+      const selected = filterState.active;
+      const visible = getVisibleProjects();
+      const items = selected === "All"
+        ? visible
+        : visible.filter(p => p.tags.includes(selected));
+
+      projCount.textContent = showAllProjects
+        ? `Showing ${items.length} / ${projects.length} projects`
+        : `Showing ${items.length} featured projects`;
+
+      grid.innerHTML = items.map((p) => {
+        const tags = p.tags.map(t => `<span class="tag">${t}</span>`).join("");
+        const idx = projects.indexOf(p);
+        return `
+          <div class="proj" data-idx="${idx}">
+            <h3>${p.title}</h3>
+            <p>${p.blurb}</p>
+            <div class="tags">${tags}</div>
+            <div class="meta">
+              <span>Click for details</span>
+              <span>↗</span>
+            </div>
+          </div>
+        `;
+      }).join("");
+
+      grid.querySelectorAll(".proj").forEach(card=>{
+        card.addEventListener("click", () => openModal(+card.dataset.idx));
+      });
+    }
+
+    toggleFeaturedBtn.addEventListener("click", () => {
+      showAllProjects = !showAllProjects;
+      toggleFeaturedBtn.textContent = showAllProjects ? "✨ Show Featured Only" : "✨ View All Projects";
+      filterState.active = "All";
+      renderFilters();
+      renderGrid();
+    });
+
+    // ====== MODAL ======
+    const modalWrap = document.getElementById("modalWrap");
+    const closeModalBtn = document.getElementById("closeModal");
+    const mTitle = document.getElementById("mTitle");
+    const mTags = document.getElementById("mTags");
+    const mDesc = document.getElementById("mDesc");
+    const mActions = document.getElementById("mActions");
+
+    function openModal(idx){
+      const p = projects[idx];
+      mTitle.textContent = p.title;
+      mDesc.innerHTML = (p.details || []).map(pt => `<li>${pt}</li>`).join("");
+      mTags.innerHTML = p.tags.map(t=> `<span class="tag">${t}</span>`).join("");
+
+      const actions = [];
+      (p.links || []).forEach(l => {
+        if (l.href) {
+          actions.push(`<a class="btn btn-primary" href="${l.href}" target="_blank" rel="noreferrer">🔗 ${l.label}</a>`);
+        } else {
+          actions.push(`<button class="btn btn-primary" disabled title="Not publicly available">🔒 ${l.label}</button>`);
+        }
+      });
+      actions.push(`<button class="btn" id="copyEmailInModal">📧 Copy Email</button>`);
+      mActions.innerHTML = actions.join("");
+
+      modalWrap.style.display = "grid";
+      modalWrap.setAttribute("aria-hidden", "false");
+
+      const copyBtn = document.getElementById("copyEmailInModal");
+      if (copyBtn) copyBtn.addEventListener("click", copyEmail);
+    }
+
+    function closeModal(){
+      modalWrap.style.display = "none";
+      modalWrap.setAttribute("aria-hidden", "true");
+    }
+    closeModalBtn.addEventListener("click", closeModal);
+    modalWrap.addEventListener("click", (e)=>{ if(e.target === modalWrap) closeModal(); });
+    window.addEventListener("keydown", (e)=>{ if(e.key === "Escape") closeModal(); });
+
+    // ====== INIT ======
+    document.getElementById("year").textContent = new Date().getFullYear();
+    renderFilters();
+    renderGrid();
+  </script>
+</body>
+</html>
