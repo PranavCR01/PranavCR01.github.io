@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Pranav Charakondala — Forward Deployed Engineer</title>
+<meta name="description" content="Forward Deployed Engineer and Applied AI practitioner — embedding with customers, shipping AI that works in production."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:#111536;color:#EEEFD4;overflow-x:hidden;font-family:'JetBrains Mono',monospace}
+section{scroll-margin-top:56px}
+a{color:inherit;text-decoration:none}
+a:hover{color:#8AA3F8}
+::selection{background:rgba(138,163,248,.3)}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:rgba(138,163,248,.25);border-radius:2px}
+*{scrollbar-width:thin;scrollbar-color:rgba(138,163,248,.25) transparent}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(138,163,248,.5)}50%{box-shadow:0 0 0 6px rgba(138,163,248,0)}}
+@keyframes pulse-green{0%,100%{box-shadow:0 0 0 0 rgba(127,214,164,.55)}50%{box-shadow:0 0 0 6px rgba(127,214,164,0)}}
+@keyframes proof-in{from{opacity:0;transform:translateX(-12px)}to{opacity:1;transform:none}}
+@media(max-width:1100px){#hero-graph-wrap{display:none!important}}
+@media(max-width:720px){#nav-links{display:none!important}}
+</style>
+</head>
+<body>
+<div style="position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent 0,transparent 3px,rgba(138,163,248,.012) 3px,rgba(138,163,248,.012) 4px);pointer-events:none;z-index:999"></div>
+
+<!-- NAV -->
+<header style="position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(17,21,54,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(60,70,156,.6)">
+  <div style="height:2px;background:rgba(60,70,156,.25)">
+    <div id="scroll-bar" style="height:100%;width:0%;background:linear-gradient(90deg,#8AA3F8,#3C469C);transition:width 80ms linear"></div>
+  </div>
+  <div style="max-width:1240px;margin:0 auto;padding:0 28px;height:46px;display:flex;align-items:center;justify-content:space-between">
+    <span style="font-size:13px;font-weight:500;color:#8AA3F8">pranav@portfolio:~$</span>
+    <nav id="nav-links" style="display:flex;gap:24px">
+      <a href="#audit" style="font-size:11px;color:rgba(238,239,212,.55);letter-spacing:.03em;transition:color 150ms">/audit</a>
+      <a href="#work" style="font-size:11px;color:rgba(238,239,212,.55);letter-spacing:.03em;transition:color 150ms">/work</a>
+      <a href="#principles" style="font-size:11px;color:rgba(238,239,212,.55);letter-spacing:.03em;transition:color 150ms">/principles</a>
+      <a href="#log" style="font-size:11px;color:rgba(238,239,212,.55);letter-spacing:.03em;transition:color 150ms">/log</a>
+      <a href="#contact" style="font-size:11px;color:rgba(238,239,212,.55);letter-spacing:.03em;transition:color 150ms">/contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero" style="min-height:100vh;padding:108px 28px 80px;position:relative;overflow:hidden">
+  <div style="max-width:1240px;margin:0 auto;display:flex;align-items:center;gap:40px;min-height:calc(100vh - 188px)">
+    <div style="flex:1;min-width:0">
+      <div style="font-size:11px;color:rgba(138,163,248,.8);letter-spacing:.13em;margin-bottom:20px">// FORWARD DEPLOYED ENGINEER &amp; APPLIED AI</div>
+      <h1 style="font-size:clamp(2.4rem,4.5vw,4rem);font-weight:700;color:#EEEFD4;margin:0 0 28px;line-height:1.05;letter-spacing:-.035em">Pranav<br/>Charakondala</h1>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px;align-items:center">
+        <span style="font-size:12px;color:#8AA3F8;background:rgba(138,163,248,.08);border:1px solid rgba(138,163,248,.35);padding:5px 13px;border-radius:3px;white-space:nowrap">&gt; Forward Deployed Engineer</span>
+        <span style="font-size:12px;color:rgba(238,239,212,.82);background:rgba(60,70,156,.18);border:1px solid #3C469C;padding:5px 13px;border-radius:3px;white-space:nowrap">&gt; MS @ UIUC</span>
+        <span style="font-size:12px;color:#8AA3F8;background:rgba(138,163,248,.08);border:1px solid rgba(138,163,248,.35);padding:5px 13px;border-radius:3px;white-space:nowrap;display:flex;align-items:center;gap:8px">
+          <span style="width:7px;height:7px;border-radius:50%;background:#8AA3F8;animation:pulse-dot 2.2s ease-in-out infinite;flex-shrink:0;display:inline-block"></span>&gt; Open to New-Grad Roles
+        </span>
+      </div>
+      <!-- Proof block with staggered animation -->
+      <div style="font-size:12px;line-height:1.7;margin-bottom:26px;max-width:620px;padding:10px 14px;background:rgba(60,70,156,.12);border:1px solid rgba(60,70,156,.75);border-radius:4px;display:grid;grid-template-columns:max-content minmax(0,1fr);column-gap:14px;row-gap:2px">
+        <span style="animation:proof-in 420ms cubic-bezier(.22,1,.36,1) 600ms both;color:rgba(138,163,248,.75)">[CHI]</span>
+        <span style="animation:proof-in 420ms cubic-bezier(.22,1,.36,1) 600ms both;display:flex;flex-wrap:wrap;column-gap:14px;min-width:0"><span style="flex:0 0 30ch;max-width:100%;color:rgba(238,239,212,.58)">embedded with WHO researchers</span><span style="flex:1 1 auto;min-width:0;color:rgba(238,239,212,.42)">→ production platform, 12-person team</span></span>
+        <span style="animation:proof-in 420ms cubic-bezier(.22,1,.36,1) 780ms both;color:rgba(138,163,248,.75)">[Deloitte]</span>
+        <span style="animation:proof-in 420ms cubic-bezier(.22,1,.36,1) 780ms both;display:flex;flex-wrap:wrap;column-gap:14px;min-width:0"><span style="flex:0 0 30ch;max-width:100%;color:rgba(238,239,212,.58)">2 yrs enterprise delivery</span><span style="flex:1 1 auto;min-width:0;color:rgba(238,239,212,.42)">→ 12,000+ financial advisors</span></span>
+        <span style="animation:proof-in 420ms cubic-bezier(.22,1,.36,1) 960ms both;color:rgba(138,163,248,.75)">[Freelance]</span>
+        <span style="animation:proof-in 420ms cubic-bezier(.22,1,.36,1) 960ms both;display:flex;flex-wrap:wrap;column-gap:14px;min-width:0"><span style="flex:0 0 30ch;max-width:100%;color:rgba(238,239,212,.58)">zero-to-one ops platform</span><span style="flex:1 1 auto;min-width:0;color:rgba(238,239,212,.42)">→ ₹50K recovered revenue, real client</span></span>
+      </div>
+      <!-- Rotator -->
+      <div style="height:38px;display:flex;align-items:center;gap:10px;margin-bottom:12px;overflow:hidden">
+        <span style="font-size:13px;color:rgba(138,163,248,.6);flex-shrink:0">// focused on →</span>
+        <span id="rotator-text" style="min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:16px;font-weight:600;color:#8AA3F8;letter-spacing:-.01em;transition:opacity 320ms ease,transform 320ms ease"></span>
+      </div>
+      <!-- Typing subtitle -->
+      <p style="font-size:14px;line-height:1.75;color:rgba(238,239,212,.72);margin:0 0 40px;max-width:520px">
+        <span id="typed-text"></span><span style="color:#8AA3F8;animation:blink 1.1s step-end infinite">▋</span>
+      </p>
+      <!-- CTAs -->
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <a href="https://github.com/PranavCR01" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <span style="color:rgba(138,163,248,.55)">$</span> open github
+        </a>
+        <a href="https://linkedin.com/in/pranav-c-r-852752202/" target="_blank" rel="noopener noreferrer" class="btn-navy">
+          <span style="color:rgba(138,163,248,.6)">$</span> open linkedin
+        </a>
+        <a href="./Resume%20-%20Pranav.pdf" target="_blank" rel="noopener noreferrer" class="btn-dim">
+          <span style="color:rgba(238,239,212,.35)">$</span> open resume
+        </a>
+        <button type="button" id="copy-email-hero" class="btn-dim">
+          <span style="color:rgba(238,239,212,.35)">$</span> <span id="email-label-hero">copy email</span>
+        </button>
+      </div>
+    </div>
+    <div id="hero-graph-wrap" style="flex:0 1 520px;min-width:0;display:flex;align-items:center;justify-content:center">
+      <canvas id="agent-graph" width="560" height="390" style="width:100%;max-width:520px;opacity:.8"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- FDE AUDIT -->
+<section id="audit" style="padding:90px 28px;border-top:1px solid rgba(60,70,156,.4)">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="margin-bottom:32px;max-width:640px">
+      <div style="font-size:10px;color:rgba(138,163,248,.7);letter-spacing:.14em;margin-bottom:8px">// 02</div>
+      <h2 style="font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;color:#EEEFD4;letter-spacing:-.025em;margin:0 0 12px">~/fde-audit</h2>
+      <p style="font-size:13px;line-height:1.7;color:rgba(238,239,212,.62)">Seven things a forward deployed engineer gets hired to do, each backed by shipped work.</p>
+    </div>
+    <div id="audit-rows" style="border-top:1px solid rgba(60,70,156,.6)"></div>
+    <div style="padding:16px 0 0;font-size:12px;color:rgba(127,214,164,.85)">
+      <span style="color:#7FD6A4;font-weight:600">✓ 7 passed</span> · 0 failed · 21 evidence rows cited<span style="animation:blink 1.1s step-end infinite">▋</span>
+    </div>
+    <!-- Stack by layer -->
+    <div style="margin-top:28px">
+      <div style="font-size:11px;color:rgba(138,163,248,.7);letter-spacing:.1em;margin-bottom:12px">// STACK BY LAYER</div>
+      <div id="stack-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:1px;background:rgba(60,70,156,.45);border:1px solid rgba(60,70,156,.45);border-radius:6px;overflow:hidden"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE FILES -->
+<section id="work" style="padding:90px 28px;border-top:1px solid rgba(60,70,156,.4)">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="margin-bottom:32px;max-width:640px">
+      <div style="font-size:10px;color:rgba(138,163,248,.7);letter-spacing:.14em;margin-bottom:8px">// 03</div>
+      <h2 style="font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;color:#EEEFD4;letter-spacing:-.025em;margin:0 0 12px">~/case-files</h2>
+      <p style="font-size:13px;line-height:1.7;color:rgba(238,239,212,.62)">Each project written up the way an engagement gets reported: who it was for, what was broken, what shipped, and what changed.</p>
+    </div>
+    <div id="case-groups"></div>
+    <!-- Archive -->
+    <div id="archive" style="background:rgba(238,239,212,.02);border:1px solid rgba(60,70,156,.6);border-radius:6px;overflow:hidden;scroll-margin-top:70px">
+      <div style="padding:14px 20px;font-size:12px;color:rgba(238,239,212,.55);border-bottom:1px solid rgba(60,70,156,.45);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <span><span style="color:#8AA3F8">$</span> ls ./archive</span>
+        <span id="archive-count"></span>
+      </div>
+      <div id="archive-list"></div>
+    </div>
+  </div>
+</section>
+
+<!-- OPERATING PRINCIPLES -->
+<section id="principles" style="padding:90px 28px;border-top:1px solid rgba(60,70,156,.4)">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="margin-bottom:32px;max-width:640px">
+      <div style="font-size:10px;color:rgba(138,163,248,.7);letter-spacing:.14em;margin-bottom:8px">// 04</div>
+      <h2 style="font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;color:#EEEFD4;letter-spacing:-.025em;margin:0 0 12px">~/operating-principles</h2>
+      <p style="font-size:13px;line-height:1.7;color:rgba(238,239,212,.62)">Rules I build by when the system goes in front of real users. Each one came out of a specific project.</p>
+    </div>
+    <div id="principles-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:16px"></div>
+  </div>
+</section>
+
+<!-- ENGAGEMENT LOG -->
+<section id="log" style="padding:90px 28px;border-top:1px solid rgba(60,70,156,.4)">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="margin-bottom:32px">
+      <div style="font-size:10px;color:rgba(138,163,248,.7);letter-spacing:.14em;margin-bottom:8px">// 05</div>
+      <h2 style="font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;color:#EEEFD4;letter-spacing:-.025em;margin:0">~/engagement-log</h2>
+    </div>
+    <div style="font-size:12px;color:rgba(238,239,212,.55);margin-bottom:22px"><span style="color:#8AA3F8">$</span> git log --graph career</div>
+    <div id="log-list"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="padding:90px 28px 120px;border-top:1px solid rgba(60,70,156,.4)">
+  <div style="max-width:1240px;margin:0 auto">
+    <div style="font-size:10px;color:rgba(138,163,248,.7);letter-spacing:.14em;margin-bottom:8px">// 06</div>
+    <h2 style="font-size:clamp(1.5rem,3vw,2.1rem);font-weight:600;color:#EEEFD4;letter-spacing:-.025em;margin:0 0 16px">~/contact</h2>
+    <p style="font-size:clamp(1.1rem,2.2vw,1.5rem);line-height:1.5;color:rgba(238,239,212,.85);margin:0 0 10px;max-width:760px">
+      <span style="color:#8AA3F8">$</span> engage --with pranav --scope "your hardest customer problem"
+    </p>
+    <p style="font-size:13px;color:rgba(238,239,212,.55);margin:0 0 28px">reach.pranavcr@gmail.com</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <button type="button" id="copy-email-contact" style="font-size:13px;color:#111536;background:#8AA3F8;border:1px solid #8AA3F8;padding:10px 22px;border-radius:4px;cursor:pointer;font-weight:600;transition:all 150ms">
+        $ <span id="email-label-contact">copy email</span>
+      </button>
+      <a href="https://linkedin.com/in/pranav-c-r-852752202/" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:rgba(238,239,212,.85);background:rgba(60,70,156,.2);border:1px solid #3C469C;padding:10px 22px;border-radius:4px;transition:all 150ms;display:inline-block">$ open linkedin</a>
+      <a href="https://github.com/PranavCR01" target="_blank" rel="noopener noreferrer" style="font-size:13px;color:#8AA3F8;background:rgba(138,163,248,.07);border:1px solid rgba(138,163,248,.35);padding:10px 22px;border-radius:4px;transition:all 150ms;display:inline-block">$ open github</a>
+    </div>
+  </div>
+</section>
+
+<footer style="border-top:1px solid rgba(60,70,156,.4);padding:22px 28px">
+  <div style="max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+    <span style="font-size:11px;color:rgba(238,239,212,.38)">pranav@charakondala — 2026</span>
+    <span style="font-size:11px;color:rgba(238,239,212,.38)">$ exit</span>
+  </div>
+</footer>
+
+<style>
+.btn-primary{font-size:13px;color:#8AA3F8;background:rgba(138,163,248,.07);border:1px solid rgba(138,163,248,.35);padding:9px 18px;border-radius:4px;transition:all 150ms;display:inline-flex;align-items:center;gap:7px}
+.btn-primary:hover{background:rgba(138,163,248,.14);border-color:rgba(138,163,248,.6)}
+.btn-navy{font-size:13px;color:rgba(238,239,212,.85);background:rgba(60,70,156,.2);border:1px solid #3C469C;padding:9px 18px;border-radius:4px;transition:all 150ms;display:inline-flex;align-items:center;gap:7px}
+.btn-navy:hover{background:rgba(60,70,156,.4);border-color:#5A66C8;color:#EEEFD4}
+.btn-dim{font-size:13px;color:rgba(238,239,212,.65);background:rgba(238,239,212,.04);border:1px solid rgba(238,239,212,.14);padding:9px 18px;border-radius:4px;transition:all 150ms;display:inline-flex;align-items:center;gap:7px;cursor:pointer}
+.btn-dim:hover{background:rgba(238,239,212,.08);border-color:rgba(238,239,212,.28);color:#EEEFD4}
+.audit-row:hover{background:rgba(138,163,248,.03)}
+.case-card{background:rgba(238,239,212,.022);border-radius:6px;display:flex;flex-direction:column;transition:box-shadow 200ms,transform 150ms;scroll-margin-top:70px;overflow:hidden}
+.case-card:hover{transform:translateY(-2px)}
+.archive-row:hover{background:rgba(138,163,248,.05)}
+</style>
+
+<script>
+const EMAIL = 'reach.pranavcr@gmail.com';
+
+// ── DATA ──────────────────────────────────────────────────────
+const STATUS_COLORS = {
+  DEPLOYED:  [127, 214, 164],
+  PROTOTYPE: [138, 163, 248],
+  PITCH:     [232, 194, 110],
+  RESEARCH:  [160, 163, 180],
+  ARCHIVE:   [120, 124, 152],
+};
+const KIND_COLORS = {
+  EMBED:   [127, 214, 164],
+  FIELD:   [127, 214, 164],
+  DELIVER: [127, 214, 164],
+  STUDY:   [160, 163, 180],
+  BUILD:   [138, 163, 248],
+  OPEN:    [138, 163, 248],
+};
+
+const ROLES = [
+  'Zero-to-One Production Systems',
+  'LLM Eval & Observability',
+  'Agentic Workflow Design',
+  'Field AI Integration',
+  'Customer-Embedded AI Deployment',
+];
+const TYPE_TEXT = 'I embed with customers, understand their systems better than they expected anyone to, and ship AI that works in production.';
+
+const AUDIT = [
+  { name: 'customer discovery', summary: "Learn the customer's workflow before writing code.", proofs: [
+    { src: 'WHO / CHI', href: '#case-who', text: "Turned researchers' question into a four-label verdict schema: MISINFO, NO_MISINFO, DEBUNKING, CANNOT_RECOGNIZE." },
+    { src: 'Swagath', href: '#case-swagath', text: "Mapped two theatres' paper-slip process (OB/REC/CB/WST per item, per show) before building anything." },
+    { src: 'ReconAI', href: '#case-recon', text: 'Modeled the morning triage recon teams repeat daily across CSV, Splunk and Excel.' },
+  ]},
+  { name: 'zero-to-one scoping', summary: 'Start from an ambiguous problem and a blank repo.', proofs: [
+    { src: 'CIA', href: '#case-cia', text: 'No public ad CTR dataset existed, so built one: 22,248 ads across gaming, ecommerce and finance.' },
+    { src: 'Supplier CC', href: '#case-supplier', text: 'Found that procurement AI is entirely buyer-side and built the supplier-side complement as a pitch for Valorant.' },
+    { src: 'Swagath', href: '#case-swagath', text: 'Took two theatres from paper tallies to a live profit and wastage system.' },
+  ]},
+  { name: 'enterprise & legacy integration', summary: 'Work inside the systems the customer already runs.', proofs: [
+    { src: 'ReconAI', href: '#case-recon', text: 'Salesforce FSC against DB2/Snowflake, with Splunk CDC triage, FLS permissions, Apex trigger and DataWeave checks.' },
+    { src: 'Deloitte', href: '#log', text: '2 years of enterprise delivery for a platform serving 12,000+ financial advisors.' },
+    { src: 'NL → SOQL', href: '#archive', text: 'Schema-aware validation layer that reduces hallucinated fields and invalid queries.' },
+  ]},
+  { name: 'evals & observability', summary: 'Measure before claiming it works.', proofs: [
+    { src: 'ReconAI', href: '#case-recon', text: 'Benchmarked 3 LLM configs (70% / 62% / 67%). All three failed the same 11 incidents: a graph-level issue, not a model one.' },
+    { src: 'Safe RAG', href: '#case-saferag', text: '0 unsafe responses across 40+ high-risk adversarial scenarios. 100% citation rate.' },
+    { src: 'CIA', href: '#case-cia', text: 'Spearman r = 0.645 on a real-only held-out test set of 382 samples.' },
+  ]},
+  { name: 'guardrails & trust', summary: 'Make the system safe to hand to a customer.', proofs: [
+    { src: 'ReconAI', href: '#case-recon', text: 'Every LLM claim requires at least one cited evidence row; propose_replay is always gated behind human approval.' },
+    { src: 'CIA', href: '#case-cia', text: 'The agent cannot state any number not returned by a tool call.' },
+    { src: 'Safe RAG', href: '#case-saferag', text: 'Crisis-tier abstention refuses and escalates on distress signals; SQLite audit logs keep every turn reviewable.' },
+  ]},
+  { name: 'shipping under constraints', summary: 'Get it running on the budget and infra available.', proofs: [
+    { src: 'CIA', href: '#case-cia', text: 'GPU-free inference in production on HuggingFace Spaces CPU.' },
+    { src: 'Supplier CC', href: '#case-supplier', text: "SSE via fetch() because EventSource can't send Authorization headers; prompt caching keeps API costs low." },
+    { src: 'WHO / CHI', href: '#case-who', text: 'End-to-end latency under 10 seconds across ASR, OCR and LLM classification.' },
+  ]},
+  { name: 'leading & communicating', summary: 'Translate between engineers, operators and stakeholders.', proofs: [
+    { src: 'WHO / CHI', href: '#case-who', text: 'Designed the full system architecture and led a team of 12.' },
+    { src: 'Swagath', href: '#case-swagath', text: 'Nightly plain-English summary for theatre owners, with flagged items and next-day catering suggestions.' },
+    { src: 'ReconAI', href: '#case-recon', text: 'Auto-generated postmortem draft and Jira summary for every incident.' },
+  ]},
+];
+const LEAD_IDX = [0, 0, 0, 0, 1, 1, 0]; // which proof is the lead for each audit row
+
+const STACK = [
+  { layer: 'ingest',    tools: 'Whisper · EasyOCR · Zeek · Apify' },
+  { layer: 'retrieval', tools: 'FAISS · pgvector (HNSW) · PubMed E-utilities' },
+  { layer: 'agents',    tools: 'LangGraph · CrewAI · LangChain LCEL · Anthropic tool use' },
+  { layer: 'models',    tools: 'Claude · GPT-4 · Mistral · LLaMA · SigLIP 2' },
+  { layer: 'eval',      tools: 'rubrics · regressions · BERTScore · Grad-CAM' },
+  { layer: 'deploy',    tools: 'FastAPI · Docker · Celery · Supabase · Railway · Vercel' },
+  { layer: 'build',     tools: 'Python · React · SQL' },
+];
+
+const GROUPS = [
+  { label: '// deployed with real users', note: '2 engagements', cases: [
+    { id: 'case-who', file: 'case-01', status: 'DEPLOYED', live: true,
+      title: 'Multimodal Health Misinformation Detection',
+      client: 'WHO researchers, via the Center for Health Informatics, UIUC',
+      problem: 'Detect health misinformation in short-form video (TikTok, Reels, Shorts).',
+      shipped: 'Whisper ASR + EasyOCR + LLM classification with async RAG over PubMed. Designed the architecture and led a team of 12.',
+      outcome: 'Four-label verdicts with explanations and linked citations, under 10 s end to end.',
+      links: [{ label: '$ open github', href: 'https://github.com/PranavCR01/tiktok-misinformation-tool' }],
+      details: ['Multimodal pipeline: Whisper ASR, EasyOCR, and LLM classification (Claude, GPT-4, Mistral, LLaMA) with LangChain LCEL orchestration for structured, schema-enforced outputs.', 'Custom async RAG pipeline grounding verdicts in PubMed peer-reviewed literature via parallel E-utilities queries.', 'Deployed on Vercel, Railway, Supabase, and Upstash Redis with Celery for async job processing and Alembic for schema migrations.'] },
+    { id: 'case-swagath', file: 'case-02', status: 'DEPLOYED', live: true,
+      title: 'Swagath Central',
+      client: 'Two single-screen theatres in Bangalore (freelance)',
+      problem: 'Ticket, food and parking revenue hand-tallied on paper every night, with no view of per-show profit or wastage.',
+      shipped: 'React + Supabase slip tracking with carry-forward balances, plus a Groq-powered nightly summary in plain English.',
+      outcome: '~₹50,000 in identified savings over three months.',
+      links: [{ label: '$ open live-app', href: 'https://swagath-central.vercel.app' }],
+      details: ['Each show logs OB/REC/CB/WST per item, with Closing Balance carrying forward as the next show\'s Opening Balance, even across day boundaries.', 'Carry-forward logic re-derives chronological order from start_time live — never trusts a static show number, since out-of-order show insertion would silently corrupt balances.', 'Nightly AI summary flags under-performing items and suggests next-day catering.'] },
+  ]},
+  { label: '// built for a target customer', note: '4 builds', cases: [
+    { id: 'case-recon', file: 'case-03', status: 'PROTOTYPE', live: false,
+      title: 'ReconAI — Salesforce FSC Integration RCA Agent',
+      client: 'Enterprise recon teams running Salesforce FSC against DB2/Snowflake',
+      problem: '2-3 hours of manual reconciliation every morning, with diagnostic logic trapped in tribal-knowledge spreadsheets.',
+      shipped: 'LangGraph RCA agent with 7 hypothesis branches, RAG over 23 FSC artifacts, SSE streaming and auto-drafted postmortems.',
+      outcome: '70% RCA accuracy at $0.006 per incident, benchmarked across 3 LLM configs.',
+      links: [{ label: '$ open live-app', href: 'https://recon-ai-iota.vercel.app' }, { label: '$ open github', href: 'https://github.com/PranavCR01/reconAI' }, { label: '$ open demo', href: 'https://youtu.be/cEzxQ1xfltU' }],
+      details: ['LangGraph state machine with 7 hypothesis branches: DB2 history check, Splunk CDC triage, FLS field permissions, CDC channel config, Apex trigger suppression, DataWeave transform deep-dive, and RAG fallback over past incidents.', 'Early termination when confidence crosses 0.75; P1 incidents always stream first via SSE regardless of arrival order.', 'Benchmarked across 3 LLM configs — Claude Sonnet (70% accuracy, $0.006/incident), Groq Llama 3.3 70B (62%, $0.001), Hybrid (67%, best calibration). All three failed on the same 11 incidents: graph-level issues, not model-level.', 'Resolution form feeds confirmed RCAs back into the store so organizational memory accumulates.'] },
+    { id: 'case-supplier', file: 'case-04', status: 'PITCH', live: false,
+      title: 'Supplier Command Center',
+      client: 'Valorant (procurement AI, Chicago)',
+      problem: 'Suppliers spend $260K+ a year answering RFPs, compliance requests and ESG surveys across 10+ fragmented portals.',
+      shipped: 'Supplier portal with a smart inbox across 5 request types and 7 Claude Haiku features, including streaming draft responses.',
+      outcome: "Live app built as a pitch: cleaner supplier-side data makes the buyer's agents more effective.",
+      links: [{ label: '$ open live-app', href: 'https://supplier-command-center.vercel.app' }, { label: '$ open demo', href: 'https://youtu.be/QuXizVA_QDc' }],
+      details: ['Supplier profile hub with live cert expiry badges, smart inbox across 5 request types (RFP/RFQ/compliance/onboarding/ESG) with priority badges.', 'RFP gap analysis, buyer tone insight, ESG survey auto-complete. Prompt caching on system prompt keeps API costs low.', "SSE via fetch() not EventSource (EventSource can't send Authorization headers), tsx runtime in production on Railway to sidestep ESM/CommonJS compilation failures."] },
+    { id: 'case-cia', file: 'case-05', status: 'PROTOTYPE', live: false,
+      title: 'Creative Intelligence Agent (CIA)',
+      client: 'Ad creative teams in gaming, ecommerce and finance',
+      problem: 'Predict ad CTR and creative fatigue from the image alone, with no public CTR dataset to train on.',
+      shipped: '22,248-ad dataset, multi-task head on frozen SigLIP 2, Grad-CAM heatmaps, and a Claude Haiku agent with 5 tools.',
+      outcome: 'Spearman r = 0.645 on a real-only held-out set (n = 382), with CPU-only inference.',
+      links: [{ label: '$ open live-app', href: 'https://adcreative-intel.vercel.app' }, { label: '$ open github', href: 'https://github.com/PranavCR01/adcreative-intel' }, { label: '$ open model', href: 'https://pcr12-creative-intelligence-scorer.hf.space' }],
+      details: ['Scraped Meta Ad Library via Apify (16% real), augmented synthetically to 22,248 ads.', 'Multi-task MLP head on top of frozen SigLIP 2 (93M params, 197K trainable). Task 1 = CTR via BCE loss, task 2 = fatigue half-life via Weibull NLL — survival analysis.', 'Agentic layer: Claude Haiku with native Anthropic tool use, 5 tools, max 7 reasoning steps. Agent cannot state any number not returned by a tool call.'] },
+    { id: 'case-saferag', file: 'case-06', status: 'RESEARCH', live: false,
+      title: 'Safe RAG Mental Health Copilot',
+      client: 'Students facing exam anxiety (Human-Centered AI)',
+      problem: 'A conversational agent for a setting where hallucinations and unsafe advice are unacceptable.',
+      shipped: 'FAISS retrieval over WHO/CDC/APA sources, rule-based risk classification, crisis-tier abstention and SQLite audit logs.',
+      outcome: '0 unsafe responses across 40+ adversarial scenarios; 100% citation rate.',
+      links: [{ label: '$ open github', href: 'https://github.com/PranavCR01/safe-rag-mental-health-copilot' }],
+      details: ['Session-aware memory and crisis-tier abstention (refuse + escalate when distress signals detected).', 'FastAPI backend, Streamlit UI, and SQLite audit logs for full transparency and reviewability.'] },
+  ]},
+];
+
+const ARCHIVE = [
+  { name: 'AIDE-OSS', line: 'Agent-style assistant for Zeek network logs with anomaly detection and session-aware investigations.', href: 'https://github.com/PranavCR01/AIDE-OSS', label: 'github' },
+  { name: 'Salesforce LLM Copilot (NL → SOQL)', line: 'Natural language to reliable SOQL with schema-aware validation.', href: 'https://github.com/PranavCR01', label: 'github' },
+  { name: 'Contextual Fraud Detection with GenAI', line: 'LLMs as feature generators for classical fraud classifiers (F1 = 0.978).', href: 'https://github.com/PranavCR01/contextual-fraud-detection-genai', label: 'github' },
+  { name: 'Credit Line Optimization — Top 10, Synchrony Datathon 2025', line: 'Spend forecasting → risk segmentation → credit line recommendation.', href: 'https://github.com/PranavCR01/credit-line-optimizer', label: 'github' },
+  { name: 'AutoResearcher', line: 'Medical literature RAG with cited, structured summaries.', href: 'https://github.com/PranavCR01', label: 'github' },
+  { name: 'DxbAgent', line: 'Local agent for Dubai real estate: ROI analytics, RAG over property law, outreach drafts.', href: 'https://github.com/PranavCR01/DxbAgent', label: 'github' },
+  { name: 'Automated Stock Market Analysis', line: 'CrewAI multi-agent pipeline; BERTScore F1 > 0.82 against analyst rationale.', href: 'https://github.com/PranavCR01/automated-stock-market-analysis', label: 'github' },
+  { name: 'Banking & Credit Card Complaints (CFPB)', line: 'Tableau + Power BI analysis of complaint hotspots and resolution gaps.', href: 'https://github.com/PranavCR01/banking-credit-complaints-analysis', label: 'github' },
+  { name: 'Chicago Crime 2019-2024', line: 'Longitudinal R analysis of trends, seasonality and arrest rates.', href: 'https://github.com/PranavCR01/chicago-crime-analysis-2019-2024', label: 'github' },
+  { name: 'Mishathi: Smart Vision System', line: 'Raspberry Pi assistive vision with real-time audio feedback. IEEE Xplore published.', href: 'https://ieeexplore.ieee.org/document/9754032', label: 'paper' },
+];
+
+const PRINCIPLES = [
+  { n: '01', title: 'Cite or abstain.', body: "If the system can't point to evidence, it says so. Every LLM claim needs a cited row, and high-risk prompts get refused and escalated.", source: 'ReconAI, Safe RAG Copilot', href: '#case-recon' },
+  { n: '02', title: 'Humans approve side effects.', body: 'Agents propose; people confirm anything that changes data. Replays in ReconAI never run without approval.', source: 'ReconAI', href: '#case-recon' },
+  { n: '03', title: 'Debug the system, not the model.', body: 'When three model configs fail on the same 11 incidents, the fix is in the graph. Swapping models would have hidden it.', source: 'ReconAI benchmark', href: '#case-recon' },
+  { n: '04', title: "Don't trust static state.", body: "Carry-forward balances re-derive show order from start_time live, so a late entry can't silently corrupt the books.", source: 'Swagath Central', href: '#case-swagath' },
+];
+
+const LOG = [
+  { date: '[next]',     kind: 'OPEN',    head: true,   branch: false, title: 'New-grad forward deployed engineer role', lines: [] },
+  { date: '[2025-05]',  kind: 'EMBED',   head: false,  branch: false, title: 'Center for Health Informatics, UIUC — Research Lead, Applied AI', lines: [{ k: 'with', v: 'WHO researchers' }, { k: 'shipped', v: 'production misinformation-detection platform' }, { k: 'team', v: 'led 12' }] },
+  { date: '[freelance]',kind: 'FIELD',   head: false,  branch: true,  title: 'Swagath Central — two single-screen theatres, Bangalore', lines: [{ k: 'shipped', v: 'live profit, wastage and AI-summary system' }, { k: 'outcome', v: '~₹50,000 identified savings over three months' }] },
+  { date: '[2024-09]',  kind: 'STUDY',   head: false,  branch: false, title: 'MS in Information Management — UIUC', lines: [] },
+  { date: '[2022-06]',  kind: 'DELIVER', head: false,  branch: false, title: 'Deloitte Consulting (US Offices of India) — Analyst', lines: [{ k: 'tenure', v: '2 yrs enterprise delivery' }, { k: 'users', v: '12,000+ financial advisors' }] },
+  { date: '[2022-01]',  kind: 'BUILD',   head: false,  branch: false, title: 'Drongo AI — Machine Learning Intern', lines: [] },
+];
+
+// ── HELPERS ──────────────────────────────────────────────────
+const rgb = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+const statusRgb = s => STATUS_COLORS[s] || STATUS_COLORS.PROTOTYPE;
+const kindRgb   = k => KIND_COLORS[k]   || KIND_COLORS.BUILD;
+
+// ── RENDER: AUDIT ─────────────────────────────────────────────
+const auditContainer = document.getElementById('audit-rows');
+let openAudit = 0;
+
+function renderAudit() {
+  auditContainer.innerHTML = AUDIT.map((a, i) => {
+    const lead = a.proofs[LEAD_IDX[i]];
+    const others = a.proofs.filter((_, j) => j !== LEAD_IDX[i]);
+    const isOpen = openAudit === i;
+    return `
+      <div class="audit-row" style="display:flex;flex-wrap:wrap;gap:12px 48px;padding:24px 0;border-bottom:1px solid rgba(60,70,156,.4);cursor:pointer;transition:background 150ms" data-audit="${i}">
+        <div style="flex:0 1 340px;min-width:0;display:flex;gap:16px;align-items:baseline">
+          <span style="font-size:11px;color:rgba(138,163,248,.75)">0${i+1}</span>
+          <div style="display:flex;flex-direction:column;gap:5px;min-width:0">
+            <h3 style="font-size:17px;font-weight:600;color:#EEEFD4;letter-spacing:-.01em;display:flex;gap:10px;align-items:baseline">
+              <span style="color:#7FD6A4">✓</span><span>${a.name}</span>
+            </h3>
+            <p style="font-size:12px;line-height:1.6;color:rgba(238,239,212,.58)">${a.summary}</p>
+          </div>
+        </div>
+        <div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:12px">
+          <p style="font-size:14px;line-height:1.65;color:rgba(238,239,212,.9);max-width:640px">${lead.text}</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:11px">
+            <a href="${lead.href}" style="color:#111536;background:#8AA3F8;padding:3px 9px;border-radius:3px;font-weight:600" onclick="event.stopPropagation()">${lead.src} →</a>
+            <span style="color:rgba(238,239,212,.45)">also proven in</span>
+            ${others.map(o => `<a href="${o.href}" style="color:#8AA3F8;border:1px solid rgba(138,163,248,.35);padding:2px 8px;border-radius:3px" onclick="event.stopPropagation()">${o.src}</a>`).join('')}
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+
+  auditContainer.querySelectorAll('[data-audit]').forEach(el => {
+    el.addEventListener('click', () => {
+      openAudit = openAudit === +el.dataset.audit ? null : +el.dataset.audit;
+      renderAudit();
+    });
+  });
+}
+renderAudit();
+
+// ── RENDER: STACK ─────────────────────────────────────────────
+document.getElementById('stack-grid').innerHTML = STACK.map(s => `
+  <div style="background:#111536;padding:14px 16px;display:flex;flex-direction:column;gap:6px">
+    <span style="font-size:11px;color:#8AA3F8">${s.layer}</span>
+    <span style="font-size:12px;line-height:1.6;color:rgba(238,239,212,.72)">${s.tools}</span>
+  </div>`).join('');
+
+// ── RENDER: CASE FILES ────────────────────────────────────────
+let openCase = null;
+const caseContainer = document.getElementById('case-groups');
+
+function renderCases() {
+  caseContainer.innerHTML = GROUPS.map(g => `
+    <div style="margin-bottom:40px">
+      <div style="display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px">
+        <span style="font-size:12px;color:#8AA3F8">${g.label}</span>
+        <span style="font-size:11px;color:rgba(238,239,212,.45)">${g.note}</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,520px),1fr));gap:16px">
+        ${g.cases.map(k => {
+          const c = statusRgb(k.status);
+          const accentRgb = `${c[0]},${c[1]},${c[2]}`;
+          const isOpen = openCase === k.id;
+          return `
+            <article id="${k.id}" class="case-card" data-case="${k.id}"
+              style="border-top:1px solid rgba(${accentRgb},.45);border-right:1px solid rgba(60,70,156,.6);border-bottom:1px solid rgba(60,70,156,.6);border-left:3px solid rgb(${accentRgb});scroll-margin-top:70px">
+              <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 18px;border-bottom:1px solid rgba(60,70,156,.45)">
+                <span style="font-size:11px;color:rgba(238,239,212,.45)">${k.file}</span>
+                <span style="display:flex;align-items:center;gap:7px;font-size:10px;font-weight:700;letter-spacing:.07em;color:rgb(${accentRgb});background:rgba(${accentRgb},.1);border:1px solid rgba(${accentRgb},.42);padding:2px 8px;border-radius:2px">
+                  ${k.live ? `<span style="width:6px;height:6px;border-radius:50%;background:#7FD6A4;animation:pulse-green 2.2s ease-in-out infinite;display:inline-block"></span>` : ''}
+                  ${k.status}
+                </span>
+              </div>
+              <div style="padding:18px;display:flex;flex-direction:column;gap:16px;flex:1">
+                <h3 style="font-size:16px;font-weight:600;line-height:1.35;color:#EEEFD4;letter-spacing:-.01em">${k.title}</h3>
+                <div style="display:grid;grid-template-columns:max-content minmax(0,1fr);column-gap:16px;row-gap:9px;font-size:12px;line-height:1.6">
+                  <span style="color:rgba(138,163,248,.8)">client</span><span style="color:rgba(238,239,212,.78)">${k.client}</span>
+                  <span style="color:rgba(138,163,248,.8)">problem</span><span style="color:rgba(238,239,212,.72)">${k.problem}</span>
+                  <span style="color:rgba(138,163,248,.8)">shipped</span><span style="color:rgba(238,239,212,.72)">${k.shipped}</span>
+                  <span style="color:rgba(138,163,248,.8)">outcome</span><span style="color:#EEEFD4;font-weight:600">${k.outcome}</span>
+                </div>
+                ${isOpen ? `
+                  <ul style="list-style:none;display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px dashed rgba(60,70,156,.6)">
+                    ${k.details.map(d => `
+                      <li style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px;font-size:12px;line-height:1.65;color:rgba(238,239,212,.68)">
+                        <span style="color:rgba(138,163,248,.7)">›</span><span>${d}</span>
+                      </li>`).join('')}
+                  </ul>` : ''}
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:12px 18px;border-top:1px solid rgba(60,70,156,.45)">
+                ${k.links.map(l => `<a href="${l.href}" target="_blank" rel="noopener noreferrer" style="font-size:11px;color:#8AA3F8;border:1px solid rgba(138,163,248,.3);padding:5px 10px;border-radius:3px" onclick="event.stopPropagation()">${l.label}</a>`).join('')}
+                <button type="button" class="toggle-case" data-id="${k.id}" style="margin-left:auto;font-size:11px;color:rgba(238,239,212,.6);background:transparent;border:none;cursor:pointer;padding:5px 0;font-family:'JetBrains Mono',monospace">
+                  ${isOpen ? 'hide details ▴' : 'details ▾'}
+                </button>
+              </div>
+            </article>`;
+        }).join('')}
+      </div>
+    </div>`).join('');
+
+  caseContainer.querySelectorAll('.toggle-case').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const id = btn.dataset.id;
+      openCase = openCase === id ? null : id;
+      renderCases();
+    });
+  });
+}
+renderCases();
+
+// ── RENDER: ARCHIVE ───────────────────────────────────────────
+document.getElementById('archive-count').textContent = ARCHIVE.length + ' more builds';
+document.getElementById('archive-list').innerHTML = ARCHIVE.map(a => `
+  <a href="${a.href}" target="_blank" rel="noopener noreferrer" class="archive-row"
+    style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:baseline;padding:12px 20px;border-bottom:1px solid rgba(60,70,156,.3);transition:background 150ms">
+    <span style="display:flex;flex-direction:column;gap:3px;min-width:0">
+      <span style="font-size:13px;color:#EEEFD4;font-weight:500">${a.name}</span>
+      <span style="font-size:12px;line-height:1.55;color:rgba(238,239,212,.55)">${a.line}</span>
+    </span>
+    <span style="font-size:11px;color:#8AA3F8;white-space:nowrap">${a.label} →</span>
+  </a>`).join('');
+
+// ── RENDER: PRINCIPLES ────────────────────────────────────────
+document.getElementById('principles-grid').innerHTML = PRINCIPLES.map(r => `
+  <div style="position:relative;overflow:hidden;border-top:2px solid #8AA3F8;padding:18px 2px 8px;display:flex;flex-direction:column;gap:10px;isolation:isolate">
+    <span aria-hidden="true" style="position:absolute;right:-6px;top:6px;font-size:120px;font-weight:700;line-height:1;letter-spacing:-.06em;color:#EEEFD4;opacity:.06;pointer-events:none;user-select:none;z-index:-1">${r.n}</span>
+    <span style="font-size:11px;color:rgba(138,163,248,.8)">${r.n}</span>
+    <h3 style="font-size:16px;font-weight:600;color:#EEEFD4;letter-spacing:-.01em">${r.title}</h3>
+    <p style="font-size:12px;line-height:1.7;color:rgba(238,239,212,.7)">${r.body}</p>
+    <a href="${r.href}" style="font-size:11px;color:rgba(238,239,212,.5)">source: <span style="color:#8AA3F8">${r.source}</span></a>
+  </div>`).join('');
+
+// ── RENDER: LOG ───────────────────────────────────────────────
+document.getElementById('log-list').innerHTML = LOG.map((e, i, arr) => {
+  const c = kindRgb(e.kind);
+  const cRgb = `${c[0]},${c[1]},${c[2]}`;
+  const lineTop = i === 0 ? '12px' : '0';
+  const lineBottom = i === arr.length - 1 ? 'calc(100% - 12px)' : '0';
+  const dotLeft = e.branch ? '33px' : '5px';
+  const dotFill = e.head ? `rgb(${cRgb})` : '#111536';
+  const dotGlow = (e.head || e.branch) ? `0 0 12px rgba(${cRgb},.6)` : 'none';
+  const badgeColor = e.head ? '#111536' : `rgb(${cRgb})`;
+  const badgeBg = e.head ? `rgb(${cRgb})` : `rgba(${cRgb},.08)`;
+  const badgeBorder = `rgba(${cRgb},.4)`;
+  return `
+    <div style="display:grid;grid-template-columns:52px 104px minmax(0,1fr);column-gap:14px">
+      <div style="position:relative">
+        <span style="position:absolute;left:11px;width:2px;top:${lineTop};bottom:${lineBottom};background:rgba(138,163,248,.32)"></span>
+        ${e.branch ? `<span style="position:absolute;left:13px;top:11px;width:22px;height:2px;background:rgba(127,214,164,.55)"></span>` : ''}
+        <span style="position:absolute;top:5px;left:${dotLeft};width:14px;height:14px;border-radius:50%;background:${dotFill};border:2px solid rgb(${cRgb});box-shadow:${dotGlow}"></span>
+      </div>
+      <span style="font-size:12px;line-height:24px;color:rgba(138,163,248,.85)">${e.date}</span>
+      <div style="padding-bottom:30px;display:flex;flex-direction:column;gap:6px;min-width:0">
+        <div style="display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;min-height:24px">
+          <span style="font-size:10px;padding:2px 7px;border-radius:2px;font-weight:700;letter-spacing:.05em;color:${badgeColor};background:${badgeBg};border:1px solid ${badgeBorder}">${e.kind}</span>
+          <span style="font-size:14px;color:#EEEFD4;font-weight:500">${e.title}</span>
+          ${e.head ? `<span style="font-size:11px;color:#8AA3F8">(HEAD → main)<span style="animation:blink 1.1s step-end infinite">▋</span></span>` : ''}
+        </div>
+        ${e.lines.map(x => `<span style="font-size:12px;line-height:1.6;color:rgba(238,239,212,.62)"><span style="color:rgba(138,163,248,.65)">↳ ${x.k}:</span> ${x.v}</span>`).join('')}
+      </div>
+    </div>`;
+}).join('');
+
+// ── SCROLL PROGRESS ───────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const max = h.scrollHeight - h.clientHeight;
+  document.getElementById('scroll-bar').style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+}, { passive: true });
+
+// ── TYPING EFFECT ─────────────────────────────────────────────
+let typeIdx = 0;
+const typeEl = document.getElementById('typed-text');
+function tick() {
+  if (typeIdx <= TYPE_TEXT.length) {
+    typeEl.textContent = TYPE_TEXT.slice(0, typeIdx++);
+    setTimeout(tick, 42);
+  }
+}
+setTimeout(tick, 500);
+
+// ── ROTATOR ───────────────────────────────────────────────────
+let roleIdx = 0;
+const rotEl = document.getElementById('rotator-text');
+rotEl.textContent = ROLES[0];
+setInterval(() => {
+  rotEl.style.opacity = '0';
+  rotEl.style.transform = 'translateY(-10px)';
+  setTimeout(() => {
+    roleIdx = (roleIdx + 1) % ROLES.length;
+    rotEl.textContent = ROLES[roleIdx];
+    rotEl.style.transition = 'none';
+    rotEl.style.transform = 'translateY(10px)';
+    void rotEl.offsetHeight;
+    rotEl.style.transition = 'opacity 320ms ease,transform 320ms ease';
+    rotEl.style.opacity = '1';
+    rotEl.style.transform = 'translateY(0)';
+  }, 320);
+}, 2800);
+
+// ── COPY EMAIL ────────────────────────────────────────────────
+function copyEmail(labelId) {
+  const fallback = () => {
+    const ta = document.createElement('textarea');
+    ta.value = EMAIL;
+    Object.assign(ta.style, { position: 'fixed', opacity: '0', pointerEvents: 'none' });
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    try { document.execCommand('copy'); } catch(e) {}
+    document.body.removeChild(ta);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(EMAIL).catch(fallback);
+  } else { fallback(); }
+  const el = document.getElementById(labelId);
+  const orig = el.textContent;
+  el.textContent = 'copied ✓';
+  setTimeout(() => { el.textContent = orig; }, 1600);
+}
+document.getElementById('copy-email-hero').addEventListener('click', () => copyEmail('email-label-hero'));
+document.getElementById('copy-email-contact').addEventListener('click', () => copyEmail('email-label-contact'));
+
+// ── AGENT GRAPH ───────────────────────────────────────────────
+const canvas = document.getElementById('agent-graph');
+if (canvas) {
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const P = [138,163,248], TX = [238,239,212], BG = [17,21,54];
+  const S = P.map((v, i) => Math.round(v + (TX[i] - v) * .25));
+  const nodes = [
+    { id:'Input',     x:58,  y:198, c:P },
+    { id:'Retriever', x:188, y:108, c:S },
+    { id:'Memory',    x:312, y:50,  c:S },
+    { id:'LLM',       x:312, y:192, c:P },
+    { id:'Tools',     x:436, y:108, c:S },
+    { id:'Evaluator', x:436, y:292, c:P },
+    { id:'Output',    x:528, y:192, c:P },
+  ];
+  const edges = [['Input','Retriever'],['Input','LLM'],['Retriever','LLM'],['LLM','Memory'],['Memory','LLM'],['LLM','Tools'],['LLM','Evaluator'],['Tools','Evaluator'],['Evaluator','Output']];
+  const nm = {}; nodes.forEach(n => nm[n.id] = n);
+  const cp = (a, b) => { const mx=(a.x+b.x)/2, my=(a.y+b.y)/2, dx=b.x-a.x, dy=b.y-a.y, l=Math.hypot(dx,dy)||1, o=Math.min(36,l*.28); return { x: mx-(dy/l)*o, y: my+(dx/l)*o }; };
+  const pt = (a, c, b, t) => ({ x:(1-t)*(1-t)*a.x+2*(1-t)*t*c.x+t*t*b.x, y:(1-t)*(1-t)*a.y+2*(1-t)*t*c.y+t*t*b.y });
+  const dots = edges.map((e, i) => ({ e, t: i/edges.length, spd: .0026 + (i%4)*.0007 }));
+  const ra = (c, a) => `rgba(${c[0]},${c[1]},${c[2]},${a})`;
+  (function frame() {
+    ctx.clearRect(0, 0, W, H);
+    edges.forEach(([f,t]) => { const a=nm[f], b=nm[t], c=cp(a,b); ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.quadraticCurveTo(c.x,c.y,b.x,b.y); ctx.strokeStyle=ra(P,.22); ctx.lineWidth=1.5; ctx.stroke(); });
+    nodes.forEach(n => {
+      const g = ctx.createRadialGradient(n.x,n.y,3,n.x,n.y,26); g.addColorStop(0,ra(n.c,.18)); g.addColorStop(1,ra(n.c,0));
+      ctx.beginPath(); ctx.arc(n.x,n.y,26,0,Math.PI*2); ctx.fillStyle=g; ctx.fill();
+      ctx.beginPath(); ctx.arc(n.x,n.y,10,0,Math.PI*2); ctx.fillStyle=ra(BG,1); ctx.fill(); ctx.strokeStyle=ra(n.c,1); ctx.lineWidth=1.5; ctx.stroke();
+      ctx.beginPath(); ctx.arc(n.x,n.y,3.5,0,Math.PI*2); ctx.fillStyle=ra(n.c,1); ctx.fill();
+      ctx.fillStyle=ra(TX,.55); ctx.font='9px "JetBrains Mono",monospace'; ctx.textAlign='center'; ctx.fillText(n.id,n.x,n.y+26);
+    });
+    dots.forEach(d => {
+      d.t = (d.t + d.spd) % 1; const a=nm[d.e[0]], b=nm[d.e[1]], p=pt(a,cp(a,b),b,d.t);
+      const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,8); g.addColorStop(0,ra(P,.9)); g.addColorStop(.5,ra(P,.25)); g.addColorStop(1,ra(P,0));
+      ctx.beginPath(); ctx.arc(p.x,p.y,8,0,Math.PI*2); ctx.fillStyle=g; ctx.fill();
+      ctx.beginPath(); ctx.arc(p.x,p.y,2.5,0,Math.PI*2); ctx.fillStyle=ra(TX,1); ctx.fill();
+    });
+    requestAnimationFrame(frame);
+  })();
+}
+</script>
+
+<!-- CHAT WIDGET -->
+<style>
+#chat-btn{position:fixed;bottom:28px;right:28px;z-index:400;font-family:'JetBrains Mono',monospace;font-size:13px;color:#8AA3F8;background:rgba(17,21,54,.97);border:1px solid rgba(138,163,248,.35);padding:10px 18px;border-radius:4px;cursor:pointer;box-shadow:0 0 24px rgba(138,163,248,.12);transition:all 150ms;display:flex;align-items:center;gap:8px;backdrop-filter:blur(10px)}
+#chat-btn:hover{background:rgba(138,163,248,.12);box-shadow:0 0 32px rgba(138,163,248,.22)}
+#chat-btn .cb-dot{width:7px;height:7px;border-radius:50%;background:#8AA3F8;animation:pulse-dot 2.2s ease-in-out infinite;flex-shrink:0}
+#chat-panel{position:fixed;bottom:80px;right:28px;z-index:400;width:min(420px,calc(100vw - 40px));background:#11153e;border:1px solid rgba(138,163,248,.22);border-radius:8px;box-shadow:0 24px 64px rgba(0,0,0,.7);display:none;flex-direction:column;overflow:hidden;font-family:'JetBrains Mono',monospace;max-height:min(560px,calc(100vh - 120px))}
+#chat-panel.open{display:flex}
+#chat-topbar{background:rgba(138,163,248,.06);border-bottom:1px solid rgba(138,163,248,.12);padding:10px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+#chat-topbar span{font-size:12px;color:#8AA3F8}
+#chat-x{background:transparent;border:none;color:rgba(238,239,212,.3);cursor:pointer;font-size:18px;line-height:1;padding:0;transition:color 150ms}
+#chat-x:hover{color:#EEEFD4}
+#chat-messages{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;scrollbar-width:thin;scrollbar-color:rgba(138,163,248,.15) transparent}
+.msg-user{align-self:flex-end;background:rgba(138,163,248,.09);border:1px solid rgba(138,163,248,.2);color:rgba(238,239,212,.85);padding:9px 14px;border-radius:4px 4px 0 4px;font-size:13px;line-height:1.55;max-width:86%}
+.msg-bot{align-self:flex-start;background:rgba(255,255,255,.03);border:1px solid rgba(138,163,248,.1);color:rgba(238,239,212,.75);padding:9px 14px;border-radius:4px 4px 4px 0;font-size:13px;line-height:1.65;max-width:90%}
+.msg-bot.thinking{color:rgba(138,163,248,.4)}
+#chat-input-row{border-top:1px solid rgba(138,163,248,.1);padding:12px 14px;display:flex;gap:8px;align-items:center;flex-shrink:0}
+#chat-input{flex:1;background:transparent;border:1px solid rgba(138,163,248,.18);border-radius:3px;padding:8px 12px;font-family:'JetBrains Mono',monospace;font-size:13px;color:#EEEFD4;outline:none;transition:border-color 150ms}
+#chat-input:focus{border-color:rgba(138,163,248,.45)}
+#chat-input::placeholder{color:rgba(238,239,212,.2)}
+#chat-send{background:rgba(138,163,248,.09);border:1px solid rgba(138,163,248,.28);color:#8AA3F8;padding:8px 14px;border-radius:3px;cursor:pointer;font-family:'JetBrains Mono',monospace;font-size:12px;transition:all 150ms;flex-shrink:0}
+#chat-send:hover{background:rgba(138,163,248,.18)}
+#chat-send:disabled{opacity:.35;cursor:not-allowed}
+</style>
+
+<button type="button" id="chat-btn">
+  <span class="cb-dot"></span>
+  $ ask --pranav
+</button>
+
+<div id="chat-panel">
+  <div id="chat-topbar">
+    <span>pranav-assistant v1.0</span>
+    <button type="button" id="chat-x">×</button>
+  </div>
+  <div id="chat-messages">
+    <div class="msg-bot">Hey — ask me anything about Pranav's projects, experience, or stack.</div>
+  </div>
+  <div id="chat-input-row">
+    <input type="text" id="chat-input" placeholder="ask about projects, skills, experience..." maxlength="400" autocomplete="off"/>
+    <button type="button" id="chat-send">→</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const btn = document.getElementById('chat-btn');
+  const panel = document.getElementById('chat-panel');
+  const xBtn = document.getElementById('chat-x');
+  const msgs = document.getElementById('chat-messages');
+  const input = document.getElementById('chat-input');
+  const send = document.getElementById('chat-send');
+  let history = [], busy = false, lastSent = 0;
+
+  btn.addEventListener('click', () => {
+    panel.classList.toggle('open');
+    if (panel.classList.contains('open')) setTimeout(() => input.focus(), 50);
+  });
+  xBtn.addEventListener('click', () => panel.classList.remove('open'));
+
+  function addMsg(text, role) {
+    const el = document.createElement('div');
+    el.className = role === 'user' ? 'msg-user' : 'msg-bot';
+    el.textContent = text;
+    msgs.appendChild(el);
+    msgs.scrollTop = msgs.scrollHeight;
+    return el;
+  }
+
+  async function submit() {
+    const q = input.value.trim();
+    if (!q || busy) return;
+    if (Date.now() - lastSent < 2000) return;
+    lastSent = Date.now();
+    if (history.length >= 40) { addMsg('Session limit reached. Refresh to start a new conversation.', 'bot'); return; }
+    input.value = '';
+    addMsg(q, 'user');
+    history.push({ role: 'user', content: q });
+    busy = true; send.disabled = true; input.disabled = true;
+    const thinkEl = addMsg('thinking...', 'bot');
+    thinkEl.classList.add('thinking');
+    try {
+      const res = await fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ messages: history }) });
+      if (!res.ok) throw new Error(`Server error ${res.status}`);
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let full = '', buffer = '';
+      thinkEl.classList.remove('thinking');
+      thinkEl.textContent = '';
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buffer += decoder.decode(value, { stream: true });
+        const lines = buffer.split('\n');
+        buffer = lines.pop() || '';
+        for (const line of lines) {
+          const trimmed = line.trim();
+          if (!trimmed.startsWith('data:')) continue;
+          const data = trimmed.slice(5).trim();
+          if (data === '[DONE]') break;
+          try {
+            const parsed = JSON.parse(data);
+            const delta = parsed.choices?.[0]?.delta?.content;
+            if (delta) { full += delta; thinkEl.textContent = full; msgs.scrollTop = msgs.scrollHeight; }
+          } catch {}
+        }
+      }
+      if (full) history.push({ role: 'assistant', content: full });
+      else thinkEl.textContent = 'Something went wrong. Try again.';
+    } catch(err) {
+      thinkEl.textContent = 'Error reaching the server. Try again in a moment.';
+      thinkEl.classList.remove('thinking');
+    }
+    busy = false; send.disabled = false; input.disabled = false; input.focus();
+  }
+
+  send.addEventListener('click', submit);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); } });
+})();
+</script>
+</body>
+</html>
